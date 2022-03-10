@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/presentation/feature/landing_screen/view/on_boarding/on_boarding_first_view.dart';
+import 'package:portfolio_app/presentation/feature/landing_screen/view/on_boarding/on_boarding_second_view.dart';
+import 'package:portfolio_app/presentation/feature/landing_screen/view/on_boarding/on_boarding_third_view.dart';
+import 'package:portfolio_app/presentation/feature/landing_screen/widget/cta_start.dart';
 
 class LandingView extends StatefulWidget {
   const LandingView({Key? key}) : super(key: key);
@@ -55,21 +59,6 @@ class _LandingViewState extends State<LandingView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Flexible(
-                child: Container(
-                  alignment: Alignment.centerRight,
-                  child: FlatButton(
-                    onPressed: () => print('Skip'),
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Expanded(
                 flex: 3,
                 child: PageView(
@@ -80,149 +69,31 @@ class _LandingViewState extends State<LandingView> {
                       _currentPage = page;
                     });
                   },
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Center(
-                          child: Image(
-                            image: AssetImage(
-                              'assets/images/onboarding0.png',
-                            ),
-                            height: 300.0,
-                            width: 300.0,
-                          ),
-                        ),
-                        SizedBox(height: 30.0),
-                        Text(
-                          'Connect people\naround the world',
-                        ),
-                        SizedBox(height: 15.0),
-                        Text(
-                          'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(40.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Center(
-                            child: Image(
-                              image: AssetImage(
-                                'assets/images/onboarding1.png',
-                              ),
-                              height: 300.0,
-                              width: 300.0,
-                            ),
-                          ),
-                          SizedBox(height: 30.0),
-                          Text(
-                            'Live your life smarter\nwith us!',
-                          ),
-                          SizedBox(height: 15.0),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(40.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Center(
-                            child: Image(
-                              image: AssetImage(
-                                'assets/images/onboarding2.png',
-                              ),
-                              height: 300.0,
-                              width: 300.0,
-                            ),
-                          ),
-                          SizedBox(height: 30.0),
-                          Text(
-                            'Get a new experience\nof imagination',
-                          ),
-                          SizedBox(height: 15.0),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                          ),
-                        ],
-                      ),
-                    ),
+                  children: const [
+                    OnBoardingFirstView(),
+                    OnBoardingSecondView(),
+                    OnBoardingThirdView()
                   ],
                 ),
               ),
-              Flexible(
+              Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: _buildPageIndicator(),
                 ),
               ),
-              _currentPage != _numPages - 1
-                  ? Expanded(
-                      child: Align(
-                        alignment: FractionalOffset.bottomRight,
-                        child: FlatButton(
-                          onPressed: () {
-                            _pageController.nextPage(
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Text(
-                                'Next',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22.0,
-                                ),
-                              ),
-                              SizedBox(width: 10.0),
-                              Icon(
-                                Icons.arrow_forward,
-                                color: Colors.white,
-                                size: 30.0,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  : Text(''),
+              Flexible(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CtaStart(),
+                  ],
+                ),
+              )
             ],
           ),
         ),
       ),
-      bottomSheet: _currentPage == _numPages - 1
-          ? Container(
-              height: 100.0,
-              width: double.infinity,
-              color: Colors.white,
-              child: GestureDetector(
-                onTap: () => print('Get started'),
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: 30.0),
-                    child: Text(
-                      'Get started',
-                      style: TextStyle(
-                        color: Color(0xFF5B16D0),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            )
-          : Text(''),
     );
   }
 }

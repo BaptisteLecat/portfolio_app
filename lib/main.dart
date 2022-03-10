@@ -56,7 +56,7 @@ class AppView extends StatelessWidget {
               context
                   .read<LandingScreenBloc>()
                   .add(const LandingCheckFirstStart());
-              return MaterialApp(
+              return const MaterialApp(
                 debugShowCheckedModeBanner: false,
                 home: Scaffold(
                   body: Center(child: CircularProgressIndicator()),

@@ -5,53 +5,53 @@ ThemeData basicTheme() {
   TextTheme _basicTextTheme(TextTheme base) {
     return base.copyWith(
       headline1: TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'Syne',
           color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold),
       headline2: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Syne',
         fontSize: 26.0,
         color: Colors.white,
       ),
       headline3: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Syne',
         fontSize: 24.0,
         fontWeight: FontWeight.w600,
         color: Colors.white,
       ),
       headline4: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Syne',
         fontSize: 22.0,
         color: Colors.white,
       ),
       headline5: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Syne',
         fontSize: 20.0,
         color: Colors.white,
       ),
       headline6: TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'Syne',
           fontSize: 18,
           color: secondaryColorLessOpacity,
           fontWeight: FontWeight.w400),
       subtitle1: TextStyle(
-          fontFamily: 'Poppins',
+          fontFamily: 'Syne',
           fontSize: 18,
           color: Colors.white,
           fontWeight: FontWeight.w400),
       bodyText1: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Syne',
         fontSize: 15.0,
         color: bodyTextColor,
       ),
       bodyText2: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Syne',
         fontSize: 12.0,
         color: bodyTextColor,
       ),
       button: TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'Syne',
         fontSize: 16.0,
         color: primaryColor,
       ),
