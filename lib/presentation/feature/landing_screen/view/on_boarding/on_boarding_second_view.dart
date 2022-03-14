@@ -21,7 +21,6 @@ class OnBoardingSecondView extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          ClipPath(clipper: MyPainter(),)
           Padding(
             padding: EdgeInsets.symmetric(vertical: 40.0),
             child: Column(
