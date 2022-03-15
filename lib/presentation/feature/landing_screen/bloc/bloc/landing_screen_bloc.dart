@@ -5,7 +5,7 @@ part 'landing_screen_event.dart';
 part 'landing_screen_state.dart';
 
 class LandingScreenBloc extends Bloc<LandingScreenEvent, LandingScreenState> {
-  LandingScreenBloc() : super(LandingScreenLoading()) {
+  LandingScreenBloc() : super(LandingScreenHome()) {
     on<LandingCheckFirstStart>(_onFirstStartApp);
     on<LandingStartApp>(_onStartApp);
   }

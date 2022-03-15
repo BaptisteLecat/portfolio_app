@@ -17,10 +17,23 @@ class _LandingViewState extends State<LandingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: LiquidSwipe(
-          enableLoop: true,
-          fullTransitionValue: 300,
+          enableLoop: false,
+          fullTransitionValue: 800,
           waveType: WaveType.liquidReveal,
           positionSlideIcon: 0.5,
+          slideIconWidget: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                  color: Color(0xFF5036D5),
+                  borderRadius: const BorderRadius.all(Radius.circular(30))),
+              child: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+            ),
+          ),
           pages: const [
             OnBoardingFirstView(),
             OnBoardingSecondView(),

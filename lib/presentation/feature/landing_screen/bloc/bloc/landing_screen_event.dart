@@ -12,9 +12,8 @@ class LandingCheckFirstStart extends LandingScreenEvent {
 }
 
 class LandingStartApp extends LandingScreenEvent {
-  const LandingStartApp({required this.duration});
-  final int duration;
+  const LandingStartApp();
 
   @override
-  List<Object> get props => [duration];
+  List<Object> get props => [];
 }

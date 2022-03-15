@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/bloc/bloc/landing_screen_bloc.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/landing_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/view/landing_view.dart';
+import 'package:portfolio_app/presentation/feature/skill/screen/skills_screen.dart';
 import 'package:portfolio_app/presentation/widget/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:portfolio_app/presentation/widget/bottom_navigation/fab_bottom_app_bar.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
@@ -121,14 +122,16 @@ class AppView extends StatelessWidget {
                           },
                         ),
                       ),
-                      body: BlocBuilder<BottomNavigationBloc,
-                          BottomNavigationState>(
-                        builder: (context, state) {
-                          return IndexedStack(
-                            index: state.index,
-                            children: [LandingScreen(), LandingScreen()],
-                          );
-                        },
+                      body: SafeArea(
+                        child: BlocBuilder<BottomNavigationBloc,
+                            BottomNavigationState>(
+                          builder: (context, state) {
+                            return IndexedStack(
+                              index: state.index,
+                              children: [SkillsScreen(), LandingScreen()],
+                            );
+                          },
+                        ),
                       ),
                     );
                   },
