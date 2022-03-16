@@ -40,7 +40,7 @@ class SkillView extends StatelessWidget {
                 flex: 1,
                 child: Container(),
               ),
-              Flexible(
+              Expanded(
                   flex: 2,
                   child: Container(
                     decoration: BoxDecoration(
@@ -66,8 +66,9 @@ class SkillView extends StatelessWidget {
                     ),
                   )),
               Expanded(
-                  flex: 3,
+                  flex: 6,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Flexible(
                         child: Text(
@@ -85,52 +86,75 @@ class SkillView extends StatelessWidget {
                         ),
                       ),
                       Expanded(
-                        child: Row(children: [
-                          Container(
-                            height: 130,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.4),
-                                      offset: const Offset(1, -1),
-                                      blurRadius: 10,
-                                      spreadRadius: 1),
-                                ],
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(20),
-                                )),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Theme.of(context)
-                                          .primaryColor
-                                          .withOpacity(0.4),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(30))),
-                                  child: Container(
-                                    margin: const EdgeInsets.all(16.0),
-                                    child: const Icon(
-                                      Icons.arrow_back,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                Text("NodeJS",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(
-                                            color:
-                                                Theme.of(context).primaryColor))
-                              ],
+                        flex: 3,
+                        child: Flex(
+                          direction: Axis.vertical,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Projets utilisant cette Technologie",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: Colors.black),
                             ),
-                          )
-                        ]),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                              child: Row(children: [
+                                Container(
+                                  height: 130,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.4),
+                                            offset: const Offset(1, -1),
+                                            blurRadius: 10,
+                                            spreadRadius: 1),
+                                      ],
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(20),
+                                      )),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .primaryColor
+                                                .withOpacity(0.4),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(30))),
+                                        child: Container(
+                                          margin: const EdgeInsets.all(16.0),
+                                          child: const Icon(
+                                            Icons.arrow_back,
+                                            size: 30,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                      Text("NodeJS",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline5!
+                                              .copyWith(
+                                                  color: Theme.of(context)
+                                                      .primaryColor))
+                                    ],
+                                  ),
+                                )
+                              ]),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   )),
