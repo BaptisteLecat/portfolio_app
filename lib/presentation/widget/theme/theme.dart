@@ -5,53 +5,53 @@ ThemeData basicTheme() {
   TextTheme _basicTextTheme(TextTheme base) {
     return base.copyWith(
       headline1: TextStyle(
-          fontFamily: 'Syne',
+          fontFamily: 'Lato',
           color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold),
       headline2: TextStyle(
-        fontFamily: 'Syne',
+        fontFamily: 'Lato',
         fontSize: 26.0,
         color: Colors.white,
       ),
       headline3: TextStyle(
-        fontFamily: 'Syne',
+        fontFamily: 'Lato',
         fontSize: 24.0,
         fontWeight: FontWeight.w600,
         color: Colors.white,
       ),
       headline4: TextStyle(
-        fontFamily: 'Syne',
+        fontFamily: 'Lato',
         fontSize: 22.0,
         color: Colors.white,
       ),
       headline5: TextStyle(
-        fontFamily: 'Syne',
+        fontFamily: 'Lato',
         fontSize: 20.0,
         color: Colors.white,
       ),
       headline6: TextStyle(
-          fontFamily: 'Syne',
+          fontFamily: 'Lato',
           fontSize: 18,
           color: secondaryColorLessOpacity,
           fontWeight: FontWeight.w400),
       subtitle1: TextStyle(
-          fontFamily: 'Syne',
+          fontFamily: 'Lato',
           fontSize: 18,
           color: Colors.white,
           fontWeight: FontWeight.w400),
       bodyText1: TextStyle(
-        fontFamily: 'Syne',
+        fontFamily: 'Lato',
         fontSize: 15.0,
         color: bodyTextColor,
       ),
       bodyText2: TextStyle(
-        fontFamily: 'Syne',
-        fontSize: 12.0,
-        color: bodyTextColor,
+        fontFamily: 'Lato',
+        fontSize: 13.0,
+        color: secondaryColorBrighter,
       ),
       button: TextStyle(
-        fontFamily: 'Syne',
+        fontFamily: 'Lato',
         fontSize: 16.0,
         color: primaryColor,
       ),

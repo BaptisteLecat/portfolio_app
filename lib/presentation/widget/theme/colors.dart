@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
-const primaryColor = Color(0xff0AB377);
-const primaryColorDarker1 = Color(0xffF69A67);
-const primaryColorDarker2 = Color(0xffE78F5B);
-const primaryColorLessOpacity = Color(0x21FDAB53);
+const primaryColor = Color(0xff6625E8);
+const primaryColorLessOpacity = Color.fromARGB(171, 255, 89, 89);
 const primaryColorBorder = Color(0xffFFC88C);
 
-const secondaryColor = Color(0xff222626);
-const secondaryColorBrighter = Color(0xff6E6D6E);
-const secondaryColorLessOpacity = Color(0x99222626);
+const secondaryColor = Color(0xff0E1B2F);
+const secondaryColorBrighter = Color(0xff8A929D);
+const secondaryColorLessOpacity = Color(0xffDCE0E9);
 
-const backgroundColor = Color(0xff151618);
+const backgroundColor = Color(0xffF6F6F9);
 
-const lightGreyColor = Color(0xffCDD1CC);
+const lightBackgroundColor = Color(0xffFFFFFF);
 
 const bodyTextColor = Color(0xffCDD1CC);
 const bodyTextColor2 = Color(0xffCBCBCB);
