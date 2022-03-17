@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/feature/skill/view/skill_view.dart';
+import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class SkillBox extends StatelessWidget {
   const SkillBox({Key? key}) : super(key: key);
@@ -13,7 +14,8 @@ class SkillBox extends StatelessWidget {
       }),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12), color: Colors.white),
+            borderRadius: BorderRadius.circular(12),
+            color: lightBackgroundColor),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(
