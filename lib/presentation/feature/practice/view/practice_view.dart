@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/presentation/feature/practice/widget/skill_card.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class PracticeView extends StatelessWidget {
@@ -170,49 +171,7 @@ class PracticeView extends StatelessWidget {
                                                         Axis.horizontal,
                                                     itemBuilder:
                                                         ((context, index) {
-                                                      return Container(
-                                                        margin: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal: 8),
-                                                        width: 86,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          border: Border.all(
-                                                              color: secondaryColorBrighter
-                                                                  .withOpacity(
-                                                                      0.2),
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(14),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(10.0),
-                                                          child:
-                                                              Column(children: [
-                                                            Expanded(
-                                                              flex: 2,
-                                                              child: Container(
-                                                                width: 42,
-                                                                color:
-                                                                    Colors.red,
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                              height: 6,
-                                                            ),
-                                                            Expanded(
-                                                                child: Text(
-                                                                    "Flutter",
-                                                                    style: Theme.of(
-                                                                            context)
-                                                                        .textTheme
-                                                                        .bodyText1)),
-                                                          ]),
-                                                        ),
-                                                      );
+                                                      return const SkillCard();
                                                     })),
                                               )
                                             ],
