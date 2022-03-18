@@ -8,7 +8,7 @@ const secondaryColor = Color(0xff0E1B2F);
 const secondaryColorBrighter = Color(0xff8A929D);
 const secondaryColorLessOpacity = Color(0xffDCE0E9);
 
-const backgroundColor = Color(0xffF6F6F9);
+const backgroundColor = Color(0xffF7F7F7);
 
 const lightBackgroundColor = Color(0xffFFFFFF);
 
