@@ -32,7 +32,7 @@ ThemeData basicTheme() {
       ),
       headline6: TextStyle(
           fontFamily: 'Lato',
-          fontSize: 18,
+          fontSize: 16,
           color: secondaryColorLessOpacity,
           fontWeight: FontWeight.w400),
       subtitle1: TextStyle(
