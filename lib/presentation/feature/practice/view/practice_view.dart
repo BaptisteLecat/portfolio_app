@@ -17,25 +17,35 @@ class PracticeView extends StatelessWidget {
                 children: [
                   Expanded(
                       flex: 3,
-                      child: Stack(
-                        children: [
-                          Positioned(
-                              left: 0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(14.0),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                                left: 0,
+                                child: GestureDetector(
+                                  onTap: (() {
+                                    Navigator.pop(context);
+                                  }),
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: secondaryColorBrighter
+                                                .withOpacity(0.2),
+                                            width: 1),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Icon(Icons.arrow_back,
+                                          color: secondaryColor),
+                                      height: 36,
+                                      width: 36),
+                                )),
+                            Center(
                               child: Container(
-                                  color: secondaryColor,
-                                  height: 20,
-                                  width: 20)),
-                          Positioned(
-                              right: 0,
-                              child: Container(
-                                  color: secondaryColor,
-                                  height: 20,
-                                  width: 20)),
-                          Center(
-                            child: Container(
-                                color: primaryColor, height: 100, width: 100),
-                          )
-                        ],
+                                  color: primaryColor, height: 100, width: 100),
+                            )
+                          ],
+                        ),
                       )),
                   Expanded(
                       flex: 5,
@@ -97,7 +107,7 @@ class PracticeView extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
+                                        Expanded(
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 vertical: 8.0),
@@ -107,17 +117,74 @@ class PracticeView extends StatelessWidget {
                                                         .spaceBetween,
                                                 children: [
                                                   Container(
-                                                      color: secondaryColor,
-                                                      height: 12,
-                                                      width: 60),
+                                                    child: Flex(
+                                                      direction:
+                                                          Axis.horizontal,
+                                                      children: [
+                                                        const SizedBox(
+                                                          height: 20,
+                                                          child: Image(
+                                                              image: AssetImage(
+                                                                  "assets/icons/location.png")),
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 6),
+                                                        Text(
+                                                          "St-Herblain",
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .headline6,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
                                                   Container(
-                                                      color: secondaryColor,
-                                                      height: 12,
-                                                      width: 60),
+                                                    child: Flex(
+                                                      direction:
+                                                          Axis.horizontal,
+                                                      children: [
+                                                        const SizedBox(
+                                                          height: 20,
+                                                          child: Image(
+                                                              image: AssetImage(
+                                                                  "assets/icons/schedule.png")),
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 6),
+                                                        Text(
+                                                          "1 ans",
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .headline6,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
                                                   Container(
-                                                      color: secondaryColor,
-                                                      height: 12,
-                                                      width: 60),
+                                                    child: Flex(
+                                                      direction:
+                                                          Axis.horizontal,
+                                                      children: [
+                                                        const SizedBox(
+                                                          height: 20,
+                                                          child: Image(
+                                                              image: AssetImage(
+                                                                  "assets/icons/school-bag.png")),
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 6),
+                                                        Text(
+                                                          "EPSI",
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .headline6,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ]),
                                           ),
                                         ),
