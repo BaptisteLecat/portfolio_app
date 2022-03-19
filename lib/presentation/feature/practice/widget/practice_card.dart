@@ -8,12 +8,11 @@ class PracticeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      height: 90,
+      height: 100,
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        border: Border.all(
-            color: secondaryColorBrighter.withOpacity(0.2), width: 1),
-        borderRadius: BorderRadius.circular(22),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14),
       ),
       child: Stack(
         children: [
@@ -32,11 +31,11 @@ class PracticeCard extends StatelessWidget {
               flex: 1,
               child: Center(
                 child: Container(
-                    height: 52,
-                    width: 52,
+                    height: 54,
+                    width: 54,
                     decoration: BoxDecoration(
                         color: primaryColor,
-                        borderRadius: BorderRadius.circular(14))),
+                        borderRadius: BorderRadius.circular(12))),
               ),
             ),
             Expanded(

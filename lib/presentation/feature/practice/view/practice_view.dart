@@ -114,7 +114,7 @@ class PracticeView extends StatelessWidget {
                                             child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
-                                                        .spaceBetween,
+                                                        .spaceEvenly,
                                                 children: [
                                                   Container(
                                                     child: Flex(
@@ -148,7 +148,7 @@ class PracticeView extends StatelessWidget {
                                                           height: 20,
                                                           child: Image(
                                                               image: AssetImage(
-                                                                  "assets/icons/schedule.png")),
+                                                                  "assets/icons/rocket.png")),
                                                         ),
                                                         const SizedBox(
                                                             width: 6),
@@ -192,7 +192,7 @@ class PracticeView extends StatelessWidget {
                                           height: 12,
                                         ),
                                         Expanded(
-                                            flex: 3,
+                                            flex: 2,
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
@@ -205,7 +205,7 @@ class PracticeView extends StatelessWidget {
                                                             color:
                                                                 secondaryColor)),
                                                 SizedBox(
-                                                  height: 12,
+                                                  height: 6,
                                                 ),
                                                 Text(
                                                   "Je suis chargé du développement de l'application Windle : un assistant de dimensionnement dédié au chauffagiste.",
