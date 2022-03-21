@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio_app/presentation/feature/home/screen/home_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/bloc/bloc/landing_screen_bloc.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/landing_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/view/landing_view.dart';
@@ -130,7 +131,7 @@ class AppView extends StatelessWidget {
                             return IndexedStack(
                               index: state.index,
                               children: [
-                                SkillsScreen(),
+                                HomeScreen(),
                                 LandingScreen(),
                                 PracticesScreen()
                               ],
