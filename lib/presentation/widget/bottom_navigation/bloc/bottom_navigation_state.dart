@@ -1,6 +1,6 @@
 part of 'bottom_navigation_bloc.dart';
 
-enum NavbarItem { home, presence, classroom }
+enum NavbarItem { home, practice, skill }
 
 class BottomNavigationState extends Equatable {
   final NavbarItem navbarItem;

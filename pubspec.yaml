@@ -40,6 +40,7 @@ dependencies:
   liquid_swipe: ^2.1.1
   flutter_svg: ^1.0.3
   syncfusion_flutter_charts: ^19.4.56
+  custom_navigation_bar: ^0.8.2
 
 dev_dependencies:
   flutter_test:

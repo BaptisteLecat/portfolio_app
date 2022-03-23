@@ -1,3 +1,4 @@
+import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_app/presentation/feature/home/screen/home_screen.dart';
@@ -75,54 +76,46 @@ class AppView extends StatelessWidget {
                 home: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
                   builder: (context, state) {
                     return Scaffold(
-                      bottomNavigationBar: FABBottomAppBar(
-                        backgroundColor: secondaryColor,
-                        color: Colors.white,
-                        selectedColor: primaryColor,
-                        notchedShape: const CircularNotchedRectangle(),
+                      extendBodyBehindAppBar: true,
+                      bottomNavigationBar: CustomNavigationBar(
+                        isFloating: true,
+                        borderRadius: Radius.circular(18),
+                        iconSize: 24.0,
+                        selectedColor: Color(0xff040307),
+                        strokeColor: Color(0x30040307),
+                        unSelectedColor: Color(0xffacacac),
+                        //backgroundColor: Colors.white,
                         items: [
-                          FABBottomAppBarItem(
-                              iconData: const AssetImage(
-                                  "assets/icons/menu/home.png"),
-                              selectedIconData: const AssetImage(
-                                  "assets/icons/menu/home_selected.png"),
-                              text: 'Home'),
-                          FABBottomAppBarItem(
-                              iconData: const AssetImage(
-                                  "assets/icons/menu/school.png"),
-                              selectedIconData: const AssetImage(
-                                  "assets/icons/menu/school_selected.png"),
-                              text: 'Ma Classe'),
+                          CustomNavigationBarItem(
+                            icon: Icon(Icons.home),
+                            title: Text("Accueil"),
+                          ),
+                          CustomNavigationBarItem(
+                            badgeCount: 3,
+                            showBadge: true,
+                            icon: Icon(Icons.shopping_cart),
+                            title: Text("Experience"),
+                          ),
+                          CustomNavigationBarItem(
+                            icon: Icon(Icons.lightbulb_outline),
+                            title: Text("Competence"),
+                          ),
                         ],
-                        onTabSelected: (index) {
+                        currentIndex:
+                            context.read<BottomNavigationBloc>().state.index,
+                        onTap: (index) {
                           if (index == 0) {
                             context.read<BottomNavigationBloc>().add(
                                 const NavigateTo(navBarItem: NavbarItem.home));
                           } else if (index == 1) {
                             context.read<BottomNavigationBloc>().add(
                                 const NavigateTo(
-                                    navBarItem: NavbarItem.classroom));
+                                    navBarItem: NavbarItem.practice));
+                          } else if (index == 2) {
+                            context.read<BottomNavigationBloc>().add(
+                                const NavigateTo(navBarItem: NavbarItem.skill));
                           }
                         },
-                      ),
-                      floatingActionButtonLocation:
-                          FloatingActionButtonLocation.centerDocked,
-                      floatingActionButton: SizedBox(
-                        width: 64.0,
-                        height: 64.0,
-                        child: FloatingActionButton(
-                          backgroundColor: primaryColor,
-                          shape: const CircleBorder(),
-                          elevation: 0.0,
-                          child: Padding(
-                              padding: const EdgeInsets.all(14),
-                              child: Image.asset("assets/icons/menu/call.png")),
-                          onPressed: () {
-                            context.read<BottomNavigationBloc>().add(
-                                const NavigateTo(
-                                    navBarItem: NavbarItem.presence));
-                          },
-                        ),
                       ),
                       body: SafeArea(
                         child: BlocBuilder<BottomNavigationBloc,
@@ -132,8 +125,8 @@ class AppView extends StatelessWidget {
                               index: state.index,
                               children: [
                                 HomeScreen(),
-                                LandingScreen(),
-                                PracticesScreen()
+                                PracticesScreen(),
+                                SkillsScreen(),
                               ],
                             );
                           },

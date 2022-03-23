@@ -17,13 +17,13 @@ void _onNavigateTo(NavigateTo event, Emitter<BottomNavigationState> emit) {
       emit(const BottomNavigationState()
           .copyWith(navbarItem: NavbarItem.home, index: 0));
       break;
-    case NavbarItem.presence:
+    case NavbarItem.practice:
       emit(const BottomNavigationState()
-          .copyWith(navbarItem: NavbarItem.presence, index: 1));
+          .copyWith(navbarItem: NavbarItem.practice, index: 1));
       break;
-    case NavbarItem.classroom:
+    case NavbarItem.skill:
       emit(const BottomNavigationState()
-          .copyWith(navbarItem: NavbarItem.classroom, index: 2));
+          .copyWith(navbarItem: NavbarItem.skill, index: 2));
       break;
   }
 }
