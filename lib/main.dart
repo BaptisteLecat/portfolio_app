@@ -1,6 +1,7 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio_app/presentation/feature/home/screen/home_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/bloc/bloc/landing_screen_bloc.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/landing_screen.dart';
@@ -87,17 +88,20 @@ class AppView extends StatelessWidget {
                         //backgroundColor: Colors.white,
                         items: [
                           CustomNavigationBarItem(
-                            icon: Icon(Icons.home),
+                            icon:
+                                SvgPicture.asset("assets/icons/ui/maison.svg"),
                             title: Text("Accueil"),
                           ),
                           CustomNavigationBarItem(
                             badgeCount: 3,
                             showBadge: true,
-                            icon: Icon(Icons.shopping_cart),
+                            icon: SvgPicture.asset(
+                                "assets/icons/ui/livre-alt.svg"),
                             title: Text("Experience"),
                           ),
                           CustomNavigationBarItem(
-                            icon: Icon(Icons.lightbulb_outline),
+                            icon:
+                                SvgPicture.asset("assets/icons/ui/ampoule.svg"),
                             title: Text("Competence"),
                           ),
                         ],
