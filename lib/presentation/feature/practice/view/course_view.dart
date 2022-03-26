@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/feature/practice/widget/skill_card.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
-class PracticeView extends StatelessWidget {
-  const PracticeView({Key? key}) : super(key: key);
+class CourseView extends StatelessWidget {
+  const CourseView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

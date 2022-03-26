@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_app/presentation/feature/practice/screen/practice_screen.dart';
+import 'package:portfolio_app/presentation/feature/practice/screen/course_screen.dart';
+import 'package:portfolio_app/presentation/feature/practice/screen/work_screen.dart';
 import 'package:portfolio_app/presentation/feature/practice/widget/practice_card.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
@@ -39,7 +40,7 @@ class PracticesView extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: ((context) =>
-                                              PracticeScreen())));
+                                              CourseScreen())));
                                 }),
                                 child: PracticeCard());
                           })),
@@ -61,11 +62,19 @@ class PracticesView extends StatelessWidget {
                     ),
                     SizedBox(
                       child: ListView.builder(
-                          itemCount: 5,
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
+                          itemCount: 4,
                           itemBuilder: ((context, index) {
-                            return PracticeCard();
+                            return GestureDetector(
+                                onTap: (() {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              WorkScreen())));
+                                }),
+                                child: PracticeCard());
                           })),
                     ),
                   ],
