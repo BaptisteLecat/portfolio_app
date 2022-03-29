@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/presentation/feature/account/screen/account_screen.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/code_time_chart.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/github_data.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/mission_card.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
+import 'package:video_player/video_player.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    // Create and store the VideoPlayerController. The VideoPlayerController
+    // offers several different constructors to play videos from assets, files,
+    // or the internet.
+    _controller = VideoPlayerController.asset('assets/movies/profile.mp4');
+
+    // Initialize the controller and store the Future for later use.
+    _initializeVideoPlayerFuture = _controller.initialize();
+
+    // Use the controller to loop the video.
+    _controller.setLooping(true);
+
+    _controller.play();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Ensure disposing of the VideoPlayerController to free up resources.
+    _controller.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +82,43 @@ class HomeView extends StatelessWidget {
                           )
                         ],
                       ),
-                      Container(
-                        height: 42,
-                        width: 42,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(12)),
+                      GestureDetector(
+                        onTap: (() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AccountScreen()));
+                        }),
+                        child: Container(
+                          height: 52,
+                          width: 52,
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: FutureBuilder(
+                            future: _initializeVideoPlayerFuture,
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.done) {
+                                // If the VideoPlayerController has finished initialization, use
+                                // the data it provides to limit the aspect ratio of the VideoPlayer.
+                                return Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: AspectRatio(
+                                    aspectRatio: _controller.value.aspectRatio,
+                                    // Use the VideoPlayer widget to display the video.
+                                    child: VideoPlayer(_controller),
+                                  ),
+                                );
+                              } else {
+                                // If the VideoPlayerController is still initializing, show a
+                                // loading spinner.
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                            },
+                          ),
+                        ),
                       )
                     ],
                   ),
@@ -73,7 +140,8 @@ class HomeView extends StatelessWidget {
                         height: 10,
                       ),
                       Row(
-                        children: [
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
                           CodeTimeChart(),
                           SizedBox(
                             width: 14,

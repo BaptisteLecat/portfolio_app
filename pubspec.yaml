@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^1.0.3
   syncfusion_flutter_charts: ^19.4.56
   custom_navigation_bar: ^0.8.2
+  video_player: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
     - assets/images/svg/
     - assets/icons/
     - assets/icons/ui/
+    - assets/movies/profile.mp4
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
