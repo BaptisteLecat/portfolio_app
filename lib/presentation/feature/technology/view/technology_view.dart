@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/domain/entity/technology/technology.dart';
 
-class SkillView extends StatelessWidget {
-  const SkillView({Key? key}) : super(key: key);
+class TechnologyView extends StatelessWidget {
+  final Technology technology;
+  const TechnologyView({Key? key, required this.technology}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,7 @@ class SkillView extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          "NodeJS",
+                          "${technology.title}",
                           style: Theme.of(context)
                               .textTheme
                               .headline2!
@@ -81,7 +83,7 @@ class SkillView extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          "Node.js est une plateforme logicielle libre en JavaScript, orientée vers les applications réseau évènementielles hautement concurrentes qui doivent pouvoir monter en charge. Elle utilise la machine virtuelle V8, la librairie libuv pour sa boucle d'évènements, et implémente sous licence MIT les spécifications CommonJS.",
+                          "${technology.description}",
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),

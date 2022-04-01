@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_app/presentation/feature/skill/view/skill_view.dart';
+import 'package:portfolio_app/domain/entity/technology/technology.dart';
+import 'package:portfolio_app/presentation/feature/technology/view/technology_view.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
-class SkillBox extends StatelessWidget {
-  const SkillBox({Key? key}) : super(key: key);
+class TechnologyBox extends StatelessWidget {
+  final Technology technology;
+  const TechnologyBox({Key? key, required this.technology}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (() {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SkillView()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => TechnologyView(
+                      technology: technology,
+                    )));
       }),
       child: Container(
         decoration: BoxDecoration(
@@ -36,7 +42,7 @@ class SkillBox extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text("NodeJS",
+                Text("${technology.title}",
                     style: Theme.of(context)
                         .textTheme
                         .headline5!

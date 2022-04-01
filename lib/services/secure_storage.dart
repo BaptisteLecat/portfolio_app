@@ -10,13 +10,15 @@ class SecureStorageHandler {
   /// Method that returns the token
   /// ------------------------------------------------------------
   Future<String?> getToken() async {
-    return _storage.read(key: _ktokenPrefs);
+    return await _storage
+        .read(key: _ktokenPrefs)
+        .onError((error, stackTrace) => null);
   }
 
   /// ----------------------------------------------------------
   /// Method that saves the token
   /// ----------------------------------------------------------
   Future<void> setToken(String token) async {
-    _storage.write(key: _ktokenPrefs, value: token);
+    await _storage.write(key: _ktokenPrefs, value: token);
   }
 }

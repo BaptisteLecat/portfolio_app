@@ -7,8 +7,8 @@ import 'package:portfolio_app/common/api/success/api/ApiSuccess.dart';
 import 'package:portfolio_app/services/secure_storage.dart';
 
 class MainFetcher {
-  static String _token = "noToken";
-  String apiUrl = "https://portfolio.baptistelecat-dev.fr/api";
+  static String? _token = null;
+  String apiUrl = "https://portfolio-api.baptistelecat-dev.fr/api";
   SecureStorageHandler _storage = SecureStorageHandler();
   String _urlBuilder(String subUrl) {
     return "${this.apiUrl}/$subUrl";
@@ -16,7 +16,7 @@ class MainFetcher {
 
   ///Singleton pattern.
   _setUserToken() async {
-    if (_token != "noToken") {
+    if (_token == null) {
       await _storage.getToken().then((value) {
         if (value != null && value != "") {
           MainFetcher._token = value;
@@ -57,11 +57,16 @@ class MainFetcher {
       print("get ${_urlBuilder(url)}");
       final response = await http.get(Uri.parse(_urlBuilder(url)),
           headers: headers == null
-              ? {
-                  "Content-Type": "application/json",
-                  "Accept": "application/ld+json",
-                  "Authorization": "Bearer ${MainFetcher._token}"
-                }
+              ? MainFetcher._token != null
+                  ? {
+                      "Content-Type": "application/json",
+                      "Accept": "application/ld+json",
+                      "Authorization": "Bearer ${MainFetcher._token}"
+                    }
+                  : {
+                      "Content-Type": "application/json",
+                      "Accept": "application/ld+json",
+                    }
               : headers);
       responseJson = _returnResponse(response: response, toJsonLd: toJsonLd);
     } on SocketException {
