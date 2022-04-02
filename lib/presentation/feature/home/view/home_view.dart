@@ -89,35 +89,61 @@ class _HomeViewState extends State<HomeView> {
                               MaterialPageRoute(
                                   builder: (context) => AccountScreen()));
                         }),
-                        child: Container(
-                          height: 52,
-                          width: 52,
-                          decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: FutureBuilder(
-                            future: _initializeVideoPlayerFuture,
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.done) {
-                                // If the VideoPlayerController has finished initialization, use
-                                // the data it provides to limit the aspect ratio of the VideoPlayer.
-                                return Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: AspectRatio(
-                                    aspectRatio: _controller.value.aspectRatio,
-                                    // Use the VideoPlayer widget to display the video.
-                                    child: VideoPlayer(_controller),
-                                  ),
-                                );
-                              } else {
-                                // If the VideoPlayerController is still initializing, show a
-                                // loading spinner.
-                                return Center(
-                                    child: CircularProgressIndicator());
-                              }
-                            },
-                          ),
+                        child: Stack(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.all(4),
+                              height: 52,
+                              width: 52,
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: FutureBuilder(
+                                future: _initializeVideoPlayerFuture,
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.done) {
+                                    // If the VideoPlayerController has finished initialization, use
+                                    // the data it provides to limit the aspect ratio of the VideoPlayer.
+                                    return Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: AspectRatio(
+                                        aspectRatio:
+                                            _controller.value.aspectRatio,
+                                        // Use the VideoPlayer widget to display the video.
+                                        child: VideoPlayer(_controller),
+                                      ),
+                                    );
+                                  } else {
+                                    // If the VideoPlayerController is still initializing, show a
+                                    // loading spinner.
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                  }
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              right: 0,
+                              top: 0,
+                              child: Container(
+                                height: 16,
+                                width: 16,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.red),
+                                child: Center(
+                                    child: Text(
+                                  "2",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText2!
+                                      .copyWith(
+                                          color: Colors.white, fontSize: 10),
+                                )),
+                              ),
+                            )
+                          ],
                         ),
                       )
                     ],
