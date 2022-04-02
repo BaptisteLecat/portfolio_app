@@ -47,6 +47,7 @@ dependencies:
   flutter_secure_storage: ^5.0.2
   http: ^0.13.4
   json_annotation: ^4.4.0
+  url_launcher: ^6.0.20
 
 dev_dependencies:
   build_runner: ^2.1.8

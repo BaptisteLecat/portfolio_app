@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_app/presentation/feature/account/view/personal_data_view.dart';
+import 'package:portfolio_app/presentation/feature/account/widget/account_list.dart';
+import 'package:portfolio_app/presentation/feature/account/widget/setting_tile.dart';
+import 'package:portfolio_app/presentation/feature/account/widget/setting_tile_redirect.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class AccountView extends StatelessWidget {
@@ -22,7 +27,7 @@ class AccountView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         color: primaryColor),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Padding(
@@ -57,7 +62,30 @@ class AccountView extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(flex: 5, child: AccountList()),
+          Expanded(
+              flex: 5,
+              child: AccountList(
+                settingTiles: [
+                  SettingTile(
+                    page: PersonalDataView(),
+                    title: "Profil",
+                    icon: SvgPicture.asset("assets/icons/ui/user.svg",
+                        color: secondaryColor),
+                  ),
+                  SettingTile(
+                    page: PersonalDataView(),
+                    title: "Localisation",
+                    icon: SvgPicture.asset("assets/icons/ui/marker.svg",
+                        color: secondaryColor),
+                  ),
+                  SettingTile(
+                    page: PersonalDataView(),
+                    title: "Informations",
+                    icon: SvgPicture.asset("assets/icons/ui/info.svg",
+                        color: secondaryColor),
+                  ),
+                ],
+              )),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -67,7 +95,28 @@ class AccountView extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(flex: 5, child: AccountList()),
+          Expanded(
+              flex: 5,
+              child: AccountList(
+                settingTiles: [
+                  SettingTileRedirect(
+                      url: 'https://github.com/BaptisteLecat',
+                      title: "Github",
+                      icon: SvgPicture.asset("assets/icons/github.svg",
+                          color: secondaryColor)),
+                  SettingTileRedirect(
+                      url: 'https://www.linkedin.com/in/baptiste-lecat/',
+                      title: "Linkedin",
+                      icon: SvgPicture.asset("assets/icons/linkedin.svg",
+                          color: secondaryColor)),
+                  SettingTile(
+                      page: PersonalDataView(),
+                      title: "Curriculum Vitae",
+                      icon: SvgPicture.asset(
+                          "assets/icons/ui/graduation-cap.svg",
+                          color: secondaryColor)),
+                ],
+              )),
           Flexible(
             flex: 4,
             child: Padding(
@@ -81,7 +130,7 @@ class AccountView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Icon(Icons.email),
+                      const Icon(Icons.email),
                       Text("N'hésitez pas à me contacter si vous le souhaitez.",
                           style: Theme.of(context)
                               .textTheme
@@ -94,128 +143,6 @@ class AccountView extends StatelessWidget {
             ),
           )
         ]),
-      ),
-    );
-  }
-}
-
-class AccountList extends StatelessWidget {
-  const AccountList({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Column(
-        children: [
-          Expanded(
-            child: Row(
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      color: secondaryColorLessOpacity,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Icon(Icons.power_off_outlined, color: secondaryColor),
-                ),
-                SizedBox(
-                  width: 14,
-                ),
-                Expanded(
-                  child: Text("Données personnelles",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: secondaryColor,
-                          )),
-                ),
-                Icon(Icons.chevron_right, color: secondaryColor),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 14,
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      color: secondaryColorLessOpacity,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Icon(Icons.power_off_outlined, color: secondaryColor),
-                ),
-                SizedBox(
-                  width: 14,
-                ),
-                Expanded(
-                  child: Text("Données personnelles",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: secondaryColor,
-                          )),
-                ),
-                Icon(Icons.chevron_right, color: secondaryColor),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 14,
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      color: secondaryColorLessOpacity,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Icon(Icons.power_off_outlined, color: secondaryColor),
-                ),
-                SizedBox(
-                  width: 14,
-                ),
-                Expanded(
-                  child: Text("Données personnelles",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: secondaryColor,
-                          )),
-                ),
-                Icon(Icons.chevron_right, color: secondaryColor),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 14,
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      color: secondaryColorLessOpacity,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Icon(Icons.power_off_outlined, color: secondaryColor),
-                ),
-                SizedBox(
-                  width: 14,
-                ),
-                Expanded(
-                  child: Text("Données personnelles",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: secondaryColor,
-                          )),
-                ),
-                Icon(Icons.chevron_right, color: secondaryColor),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
