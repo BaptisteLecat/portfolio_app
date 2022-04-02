@@ -14,60 +14,48 @@ class PracticeCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
       ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: 3,
-            right: 3,
+      child: Row(children: [
+        Expanded(
+          flex: 1,
+          child: Center(
             child: Container(
-              decoration: BoxDecoration(
-                  color: secondaryColorBrighter, shape: BoxShape.circle),
-              height: 22,
-              width: 22,
-            ),
+                height: 54,
+                width: 54,
+                decoration: BoxDecoration(
+                    color: primaryColor,
+                    borderRadius: BorderRadius.circular(12))),
           ),
-          Row(children: [
-            Expanded(
-              flex: 1,
-              child: Center(
-                child: Container(
-                    height: 54,
-                    width: 54,
-                    decoration: BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.circular(12))),
+        ),
+        Expanded(
+          flex: 3,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Windle",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: primaryColor, fontWeight: FontWeight.w600),
               ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Windle",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        color: primaryColor, fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    "Alternance - Flutter / Symfony",
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                        color: secondaryColor, fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    "St-Herblain",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2!
-                        .copyWith(color: secondaryColorBrighter),
-                  ),
-                ],
+              Text(
+                "Alternance - Flutter / Symfony",
+                style: Theme.of(context).textTheme.headline6!.copyWith(
+                    color: secondaryColor, fontWeight: FontWeight.w600),
               ),
-            ),
-          ]),
-        ],
-      ),
+              Text(
+                "St-Herblain",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2!
+                    .copyWith(color: secondaryColorBrighter),
+              ),
+            ],
+          ),
+        ),
+      ]),
     );
   }
 }

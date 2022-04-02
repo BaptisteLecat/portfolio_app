@@ -26,11 +26,12 @@ class PracticesView extends StatelessWidget {
                     Text(
                       "Experiences professionnelles",
                       style: Theme.of(context).textTheme.headline4!.copyWith(
-                          color: secondaryColor, fontWeight: FontWeight.w600),
+                            color: secondaryColor,
+                          ),
                     ),
                     SizedBox(
                       child: ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: 4,
                           itemBuilder: ((context, index) {
