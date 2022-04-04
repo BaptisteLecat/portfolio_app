@@ -231,7 +231,7 @@ class CourseView extends StatelessWidget {
                                                           color:
                                                               secondaryColor)),
                                               SizedBox(
-                                                height: 86,
+                                                height: 136,
                                                 child: ListView.builder(
                                                     itemCount: 5,
                                                     scrollDirection:

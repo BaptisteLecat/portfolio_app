@@ -9,31 +9,26 @@ class SkillCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8),
-      width: 86,
-      decoration: BoxDecoration(
-        border: Border.all(
-            color: secondaryColorBrighter.withOpacity(0.2), width: 1),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              width: 42,
-              color: Colors.red,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              height: 80,
+              width: 80,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Container(color: primaryColor),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 6,
-          ),
-          Expanded(
-              child: Text("Flutter",
-                  style: Theme.of(context).textTheme.bodyText1)),
-        ]),
-      ),
-    );
+            Text(
+              "Xamarin",
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6!
+                  .copyWith(color: secondaryColor, fontWeight: FontWeight.bold),
+            )
+          ],
+        ));
   }
 }
