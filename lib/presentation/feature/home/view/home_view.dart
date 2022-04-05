@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/feature/account/screen/account_screen.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/code_time_chart.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/github_data.dart';
+import 'package:portfolio_app/presentation/feature/home/widget/mission_list.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_list.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
@@ -181,6 +182,7 @@ class _HomeViewState extends State<HomeView> {
               SizedBox(
                 height: 20,
               ),
+              Flexible(child: MissionList()),
             ],
           ),
         ),

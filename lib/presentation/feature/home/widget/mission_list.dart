@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/presentation/feature/home/widget/mission_card.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
-class ProjectList extends StatelessWidget {
-  const ProjectList({
+class MissionList extends StatelessWidget {
+  const MissionList({
     Key? key,
   }) : super(key: key);
 
@@ -16,7 +17,7 @@ class ProjectList extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              "Mes projets",
+              "Mes missions",
               style: Theme.of(context)
                   .textTheme
                   .headline5!
@@ -27,14 +28,13 @@ class ProjectList extends StatelessWidget {
             height: 10,
           ),
           SizedBox(
-            height: 220,
+            height: 74,
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: ((context, index) {
-                return ProjectCard();
-              }),
-            ),
+                scrollDirection: Axis.horizontal,
+                itemCount: 5,
+                itemBuilder: ((context, index) {
+                  return MissionCard();
+                })),
           )
         ]);
   }
