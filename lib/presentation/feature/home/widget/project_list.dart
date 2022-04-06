@@ -16,7 +16,7 @@ class ProjectList extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              "Mes projets",
+              "Projets",
               style: Theme.of(context)
                   .textTheme
                   .headline5!
