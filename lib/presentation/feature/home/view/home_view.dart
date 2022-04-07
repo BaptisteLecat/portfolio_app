@@ -31,6 +31,7 @@ class _HomeViewState extends State<HomeView> {
 
     // Use the controller to loop the video.
     _controller.setLooping(true);
+    _controller.setVolume(0.0);
 
     _controller.play();
 

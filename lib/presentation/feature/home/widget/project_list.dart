@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
+import 'package:portfolio_app/presentation/feature/project/screen/project_screen.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class ProjectList extends StatelessWidget {
@@ -32,7 +33,15 @@ class ProjectList extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: ((context, index) {
-                return ProjectCard();
+                return GestureDetector(
+                    onTap: (() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProjectScreen(),
+                          ));
+                    }),
+                    child: ProjectCard());
               }),
             ),
           )

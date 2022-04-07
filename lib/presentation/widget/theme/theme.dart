@@ -7,7 +7,7 @@ ThemeData basicTheme() {
       headline1: TextStyle(
           fontFamily: 'Lato',
           color: Colors.white,
-          fontSize: 24,
+          fontSize: 30,
           fontWeight: FontWeight.bold),
       headline2: TextStyle(
         fontFamily: 'Lato',
