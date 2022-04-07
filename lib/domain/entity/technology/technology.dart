@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:portfolio_app/domain/entity/entity.dart';
-// import 'package:windle/data/model/client.dart' as data;
 import 'package:portfolio_app/data/model/technology/technology.dart' as data;
 part 'technology.freezed.dart';
 part 'technology.g.dart';
