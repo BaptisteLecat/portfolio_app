@@ -10,7 +10,7 @@ class CourseRepository extends BaseRepository with fetcher.MainFetcher {
   Future fetchAll(
       {String? params, Map<String, String>? headers, bool? toJsonLd}) async {
     var response = await get(url: '$ressource$params', toJsonLd: toJsonLd);
-    return Course.listFromJson(response.content);
+    return Course.listFromJson(json.decode(response.content));
   }
 
   @override
@@ -18,7 +18,7 @@ class CourseRepository extends BaseRepository with fetcher.MainFetcher {
       {required int id, Map<String, String>? headers, bool? toJsonLd}) async {
     var response =
         await get(url: '$ressource/${id.toString()}', toJsonLd: toJsonLd);
-    return Course.fromMap(response.content);
+    return Course.fromMap(json.decode(response.content));
   }
 
   @override
@@ -29,7 +29,7 @@ class CourseRepository extends BaseRepository with fetcher.MainFetcher {
       bool? authDevice}) async {
     var response = await post(
         url: '$ressource', body: jsonEncode((body as Course).toJson()));
-    return Course.fromMap(response.content);
+    return Course.fromMap(json.decode(response.content));
   }
 
   @override
@@ -51,6 +51,6 @@ class CourseRepository extends BaseRepository with fetcher.MainFetcher {
     var response = await put(
         url: 'ressource/${(body as Course).id}',
         body: jsonEncode(body.toJson()));
-    return Course.fromMap(response.content);
+    return Course.fromMap(json.decode(response.content));
   }
 }

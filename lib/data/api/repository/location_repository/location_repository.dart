@@ -10,7 +10,7 @@ class LocationRepository extends BaseRepository with fetcher.MainFetcher {
   Future fetchAll(
       {String? params, Map<String, String>? headers, bool? toJsonLd}) async {
     var response = await get(url: '$ressource$params', toJsonLd: toJsonLd);
-    return Location.listFromJson(response.content);
+    return Location.listFromJson(json.decode(response.content));
   }
 
   @override
@@ -18,7 +18,7 @@ class LocationRepository extends BaseRepository with fetcher.MainFetcher {
       {required int id, Map<String, String>? headers, bool? toJsonLd}) async {
     var response =
         await get(url: '$ressource/${id.toString()}', toJsonLd: toJsonLd);
-    return Location.fromMap(response.content);
+    return Location.fromMap(json.decode(response.content));
   }
 
   @override
@@ -29,7 +29,7 @@ class LocationRepository extends BaseRepository with fetcher.MainFetcher {
       bool? authDevice}) async {
     var response = await post(
         url: '$ressource', body: jsonEncode((body as Location).toJson()));
-    return Location.fromMap(response.content);
+    return Location.fromMap(json.decode(response.content));
   }
 
   @override
@@ -51,6 +51,6 @@ class LocationRepository extends BaseRepository with fetcher.MainFetcher {
     var response = await put(
         url: 'ressource/${(body as Location).id}',
         body: jsonEncode(body.toJson()));
-    return Location.fromMap(response.content);
+    return Location.fromMap(json.decode(response.content));
   }
 }

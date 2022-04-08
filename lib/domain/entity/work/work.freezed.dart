@@ -28,6 +28,7 @@ class _$WorkTearOff {
       String? title,
       String? picture,
       String? description,
+      String? time,
       Company? company,
       Contract? contract,
       Location? location}) {
@@ -37,6 +38,7 @@ class _$WorkTearOff {
       title: title,
       picture: picture,
       description: description,
+      time: time,
       company: company,
       contract: contract,
       location: location,
@@ -58,6 +60,7 @@ mixin _$Work {
   String? get title => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  String? get time => throw _privateConstructorUsedError;
   Company? get company => throw _privateConstructorUsedError;
   Contract? get contract => throw _privateConstructorUsedError;
   Location? get location => throw _privateConstructorUsedError;
@@ -77,6 +80,7 @@ abstract class $WorkCopyWith<$Res> {
       String? title,
       String? picture,
       String? description,
+      String? time,
       Company? company,
       Contract? contract,
       Location? location});
@@ -101,6 +105,7 @@ class _$WorkCopyWithImpl<$Res> implements $WorkCopyWith<$Res> {
     Object? title = freezed,
     Object? picture = freezed,
     Object? description = freezed,
+    Object? time = freezed,
     Object? company = freezed,
     Object? contract = freezed,
     Object? location = freezed,
@@ -125,6 +130,10 @@ class _$WorkCopyWithImpl<$Res> implements $WorkCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
       company: company == freezed
           ? _value.company
@@ -186,6 +195,7 @@ abstract class _$WorkCopyWith<$Res> implements $WorkCopyWith<$Res> {
       String? title,
       String? picture,
       String? description,
+      String? time,
       Company? company,
       Contract? contract,
       Location? location});
@@ -214,6 +224,7 @@ class __$WorkCopyWithImpl<$Res> extends _$WorkCopyWithImpl<$Res>
     Object? title = freezed,
     Object? picture = freezed,
     Object? description = freezed,
+    Object? time = freezed,
     Object? company = freezed,
     Object? contract = freezed,
     Object? location = freezed,
@@ -238,6 +249,10 @@ class __$WorkCopyWithImpl<$Res> extends _$WorkCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
       company: company == freezed
           ? _value.company
@@ -264,6 +279,7 @@ class _$_Work extends _Work with DiagnosticableTreeMixin {
       this.title,
       this.picture,
       this.description,
+      this.time,
       this.company,
       this.contract,
       this.location})
@@ -282,6 +298,8 @@ class _$_Work extends _Work with DiagnosticableTreeMixin {
   @override
   final String? description;
   @override
+  final String? time;
+  @override
   final Company? company;
   @override
   final Contract? contract;
@@ -290,7 +308,7 @@ class _$_Work extends _Work with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Work(iri: $iri, id: $id, title: $title, picture: $picture, description: $description, company: $company, contract: $contract, location: $location)';
+    return 'Work(iri: $iri, id: $id, title: $title, picture: $picture, description: $description, time: $time, company: $company, contract: $contract, location: $location)';
   }
 
   @override
@@ -303,6 +321,7 @@ class _$_Work extends _Work with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('picture', picture))
       ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('time', time))
       ..add(DiagnosticsProperty('company', company))
       ..add(DiagnosticsProperty('contract', contract))
       ..add(DiagnosticsProperty('location', location));
@@ -319,6 +338,7 @@ class _$_Work extends _Work with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.picture, picture) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.time, time) &&
             const DeepCollectionEquality().equals(other.company, company) &&
             const DeepCollectionEquality().equals(other.contract, contract) &&
             const DeepCollectionEquality().equals(other.location, location));
@@ -332,6 +352,7 @@ class _$_Work extends _Work with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(picture),
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(time),
       const DeepCollectionEquality().hash(company),
       const DeepCollectionEquality().hash(contract),
       const DeepCollectionEquality().hash(location));
@@ -354,6 +375,7 @@ abstract class _Work extends Work {
       String? title,
       String? picture,
       String? description,
+      String? time,
       Company? company,
       Contract? contract,
       Location? location}) = _$_Work;
@@ -371,6 +393,8 @@ abstract class _Work extends Work {
   String? get picture;
   @override
   String? get description;
+  @override
+  String? get time;
   @override
   Company? get company;
   @override

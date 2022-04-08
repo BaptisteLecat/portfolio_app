@@ -39,7 +39,7 @@ class School {
       'id': id,
       'name': name,
       'description': description,
-      'location': location,
+      'location': location?.toMap(),
     };
   }
 

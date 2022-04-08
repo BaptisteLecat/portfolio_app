@@ -57,9 +57,9 @@ class Work {
       'picture': picture,
       'time': time,
       'description': description,
-      'company': company,
-      'contract': contract,
-      'location': location,
+      'company': company?.toMap(),
+      'contract': contract?.toMap(),
+      'location': location?.toMap(),
     };
   }
 

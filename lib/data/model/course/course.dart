@@ -4,6 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:portfolio_app/data/model/company/company.dart';
 import 'package:portfolio_app/data/model/contract/contract.dart';
 import 'package:portfolio_app/data/model/location/location.dart';
+import 'package:portfolio_app/data/model/school/school.dart';
 
 part 'course.g.dart';
 
@@ -17,16 +18,17 @@ class Course {
   final String? description;
   final Company? company;
   final Location? location;
-  const Course({
-    this.iri,
-    this.id,
-    this.title,
-    this.picture,
-    this.time,
-    this.description,
-    this.company,
-    this.location,
-  });
+  final School? school;
+  const Course(
+      {this.iri,
+      this.id,
+      this.title,
+      this.picture,
+      this.time,
+      this.description,
+      this.company,
+      this.location,
+      this.school});
 
   Map<String, dynamic> toJson() => _$CourseToJson(this);
 
@@ -55,8 +57,9 @@ class Course {
       'picture': picture,
       'time': time,
       'description': description,
-      'company': company,
-      'location': location,
+      'company': company?.toMap(),
+      'location': location?.toMap(),
+      'school': school?.toMap(),
     };
   }
 
@@ -71,6 +74,7 @@ class Course {
       company: map['company'] != null ? Company.fromMap(map['company']) : null,
       location:
           map['location'] != null ? Location.fromMap(map['location']) : null,
+      school: map['school'] != null ? School.fromMap(map['school']) : null,
     );
   }
 }

@@ -12,6 +12,7 @@ _$_Work _$$_WorkFromJson(Map<String, dynamic> json) => _$_Work(
       title: json['title'] as String?,
       picture: json['picture'] as String?,
       description: json['description'] as String?,
+      time: json['time'] as String?,
       company: json['company'] == null
           ? null
           : Company.fromJson(json['company'] as Map<String, dynamic>),
@@ -29,6 +30,7 @@ Map<String, dynamic> _$$_WorkToJson(_$_Work instance) => <String, dynamic>{
       'title': instance.title,
       'picture': instance.picture,
       'description': instance.description,
+      'time': instance.time,
       'company': instance.company,
       'contract': instance.contract,
       'location': instance.location,

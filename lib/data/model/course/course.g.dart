@@ -19,6 +19,9 @@ Course _$CourseFromJson(Map<String, dynamic> json) => Course(
       location: json['location'] == null
           ? null
           : Location.fromJson(json['location'] as Map<String, dynamic>),
+      school: json['school'] == null
+          ? null
+          : School.fromJson(json['school'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
@@ -30,4 +33,5 @@ Map<String, dynamic> _$CourseToJson(Course instance) => <String, dynamic>{
       'description': instance.description,
       'company': instance.company,
       'location': instance.location,
+      'school': instance.school,
     };

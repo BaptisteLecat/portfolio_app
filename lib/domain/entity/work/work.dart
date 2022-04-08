@@ -14,6 +14,7 @@ class Work with _$Work {
     String? title,
     String? picture,
     String? description,
+    String? time,
     Company? company,
     Contract? contract,
     Location? location,

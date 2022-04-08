@@ -49,7 +49,7 @@ class Company {
       'name': name,
       'description': description,
       'employees': employees,
-      'location': location,
+      'location': location?.toMap(),
     };
   }
 
