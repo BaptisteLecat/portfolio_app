@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/domain/entity/entity.dart';
 import 'package:portfolio_app/presentation/feature/practice/widget/skill_card.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class CourseView extends StatelessWidget {
-  const CourseView({Key? key}) : super(key: key);
+  final Course course;
+  const CourseView({Key? key, required this.course}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,13 +90,13 @@ class CourseView extends StatelessWidget {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  "Windle - St-Herblain",
+                                                  "${course.school!.name} - ${course.location!.label}",
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .bodyText2,
                                                 ),
                                                 Text(
-                                                  "Alternant Développeur Flutter / Symfony",
+                                                  "${course.title}",
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .headline5!
@@ -130,11 +132,14 @@ class CourseView extends StatelessWidget {
                                                         const SizedBox(
                                                             width: 6),
                                                         Text(
-                                                          "St-Herblain",
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .headline6,
+                                                          "${course.location!.label}",
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .headline6!
+                                                              .copyWith(
+                                                                  color:
+                                                                      secondaryColorBrighter),
                                                         )
                                                       ],
                                                     ),
@@ -153,11 +158,14 @@ class CourseView extends StatelessWidget {
                                                         const SizedBox(
                                                             width: 6),
                                                         Text(
-                                                          "1 ans",
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .headline6,
+                                                          "${course.time}",
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .headline6!
+                                                              .copyWith(
+                                                                  color:
+                                                                      secondaryColorBrighter),
                                                         )
                                                       ],
                                                     ),
@@ -176,11 +184,14 @@ class CourseView extends StatelessWidget {
                                                         const SizedBox(
                                                             width: 6),
                                                         Text(
-                                                          "EPSI",
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .headline6,
+                                                          "${course.school!.name}",
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .headline6!
+                                                              .copyWith(
+                                                                  color:
+                                                                      secondaryColorBrighter),
                                                         )
                                                       ],
                                                     ),
@@ -208,10 +219,13 @@ class CourseView extends StatelessWidget {
                                                   height: 6,
                                                 ),
                                                 Text(
-                                                  "Je suis chargé du développement de l'application Windle : un assistant de dimensionnement dédié au chauffagiste.",
+                                                  "${course.description}",
                                                   style: Theme.of(context)
                                                       .textTheme
-                                                      .bodyText1,
+                                                      .bodyText1!
+                                                      .copyWith(
+                                                          color:
+                                                              secondaryColorBrighter),
                                                 )
                                               ],
                                             )),

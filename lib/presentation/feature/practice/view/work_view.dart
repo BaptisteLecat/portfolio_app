@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/domain/entity/work/work.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class WorkView extends StatelessWidget {
-  const WorkView({Key? key}) : super(key: key);
+  final Work work;
+  const WorkView({Key? key, required this.work}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +54,16 @@ class WorkView extends StatelessWidget {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(
-                                        "Developpeur Mobile Flutter",
+                                        "${work.title}",
                                         style: Theme.of(context)
                                             .textTheme
-                                            .headline1!
+                                            .headline2!
                                             .copyWith(
                                                 color: secondaryColor,
                                                 fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        "Windle",
+                                        "${work.company!.name}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline5!
@@ -75,7 +77,10 @@ class WorkView extends StatelessWidget {
                                 height: 20,
                               ),
                               Expanded(
-                                child: JobInfo(),
+                                child: JobInfo(
+                                    locationName: "${work.location!.label}",
+                                    contractLabel: "${work.contract!.label}",
+                                    time: "${work.time}"),
                               ),
                               SizedBox(
                                 height: 20,
@@ -165,9 +170,7 @@ class WorkView extends StatelessWidget {
                                               right: 20.0,
                                               top: 20.0,
                                             ),
-                                            child: Text(
-                                                """Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                                      It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.""",
+                                            child: Text("${work.description}",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyText1),
@@ -193,8 +196,14 @@ class WorkView extends StatelessWidget {
 }
 
 class JobInfo extends StatelessWidget {
+  final String locationName;
+  final String contractLabel;
+  final String time;
   const JobInfo({
     Key? key,
+    required this.locationName,
+    required this.contractLabel,
+    required this.time,
   }) : super(key: key);
 
   @override
@@ -214,13 +223,11 @@ class JobInfo extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      Text("Localisation",
+                          style: Theme.of(context).textTheme.headline6),
                       Text(
-                        "Localisation",
+                        locationName,
                         style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      Text(
-                        "St-Herblain",
-                        style: Theme.of(context).textTheme.bodyText2,
                       )
                     ],
                   )),
@@ -242,13 +249,11 @@ class JobInfo extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      Text("Contrat",
+                          style: Theme.of(context).textTheme.headline6),
                       Text(
-                        "Contrat",
+                        contractLabel,
                         style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      Text(
-                        "Alternance",
-                        style: Theme.of(context).textTheme.bodyText2,
                       )
                     ],
                   )),
@@ -270,13 +275,11 @@ class JobInfo extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      Text("Durée",
+                          style: Theme.of(context).textTheme.headline6),
                       Text(
-                        "Durée",
+                        time,
                         style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      Text(
-                        "1 ans",
-                        style: Theme.of(context).textTheme.bodyText2,
                       )
                     ],
                   )),

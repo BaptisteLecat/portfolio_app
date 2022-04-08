@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class PracticeCard extends StatelessWidget {
-  const PracticeCard({Key? key}) : super(key: key);
+  final String companyName;
+  final String locationLabel;
+  final String title;
+  const PracticeCard(
+      {Key? key,
+      required this.companyName,
+      required this.locationLabel,
+      required this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +42,19 @@ class PracticeCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Windle",
+                companyName,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1!
                     .copyWith(color: primaryColor, fontWeight: FontWeight.w600),
               ),
               Text(
-                "Alternance - Flutter / Symfony",
+                title,
                 style: Theme.of(context).textTheme.headline6!.copyWith(
                     color: secondaryColor, fontWeight: FontWeight.w600),
               ),
               Text(
-                "St-Herblain",
+                locationLabel,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText2!
