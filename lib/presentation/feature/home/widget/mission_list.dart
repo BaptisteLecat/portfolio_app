@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/mission_card.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
+import 'package:portfolio_app/presentation/feature/mission/screen/mission_screen.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class MissionList extends StatelessWidget {
@@ -33,7 +34,14 @@ class MissionList extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 5,
                 itemBuilder: ((context, index) {
-                  return MissionCard();
+                  return GestureDetector(
+                      onTap: (() {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MissionScreen()));
+                      }),
+                      child: MissionCard());
                 })),
           )
         ]);

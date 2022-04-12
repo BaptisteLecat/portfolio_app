@@ -6,44 +6,45 @@ ThemeData basicTheme() {
     return base.copyWith(
       headline1: TextStyle(
           fontFamily: 'Lato',
-          color: Colors.white,
+          color: secondaryColor,
           fontSize: 30,
           fontWeight: FontWeight.bold),
       headline2: TextStyle(
         fontFamily: 'Lato',
         fontSize: 26.0,
-        color: Colors.white,
+        fontWeight: FontWeight.w600,
+        color: secondaryColor,
       ),
       headline3: TextStyle(
         fontFamily: 'Lato',
         fontSize: 24.0,
         fontWeight: FontWeight.w600,
-        color: Colors.white,
+        color: secondaryColor,
       ),
       headline4: TextStyle(
         fontFamily: 'Lato',
         fontSize: 22.0,
-        color: Colors.white,
+        color: secondaryColorBrighter,
       ),
       headline5: TextStyle(
         fontFamily: 'Lato',
         fontSize: 20.0,
-        color: Colors.white,
+        color: secondaryColorBrighter,
       ),
       headline6: TextStyle(
           fontFamily: 'Lato',
           fontSize: 16,
-          color: secondaryColorLessOpacity,
+          color: secondaryColorBrighter,
           fontWeight: FontWeight.w400),
       subtitle1: TextStyle(
           fontFamily: 'Lato',
           fontSize: 18,
-          color: Colors.white,
+          color: secondaryColorBrighter,
           fontWeight: FontWeight.w400),
       bodyText1: TextStyle(
         fontFamily: 'Lato',
         fontSize: 15.0,
-        color: bodyTextColor,
+        color: secondaryColorBrighter,
       ),
       bodyText2: TextStyle(
         fontFamily: 'Lato',

@@ -2,10 +2,12 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_app/data/model/mission/mission.dart';
 import 'package:portfolio_app/presentation/feature/home/screen/home_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/bloc/bloc/landing_screen_bloc.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/landing_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/view/landing_view.dart';
+import 'package:portfolio_app/presentation/feature/mission/bloc/mission_bloc.dart';
 import 'package:portfolio_app/presentation/feature/practice/screen/practices_screen.dart';
 import 'package:portfolio_app/presentation/feature/technology/screen/technologies_screen.dart';
 import 'package:portfolio_app/presentation/widget/bottom_navigation/bloc/bottom_navigation_bloc.dart';
@@ -51,6 +53,9 @@ class AppView extends StatelessWidget {
         ),
         BlocProvider<LandingScreenBloc>(
           create: (context) => LandingScreenBloc(),
+        ),
+        BlocProvider<MissionBloc>(
+          create: (context) => MissionBloc(),
         ),
       ],
       child: BlocBuilder<LandingScreenBloc, LandingScreenState>(

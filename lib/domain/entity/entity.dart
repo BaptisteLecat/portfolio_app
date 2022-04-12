@@ -6,3 +6,5 @@ export 'school/school.dart';
 export 'technology/technology.dart';
 export 'work/work.dart';
 export 'technology/technology.dart';
+export 'mission/mission.dart';
+export 'author/author.dart';
