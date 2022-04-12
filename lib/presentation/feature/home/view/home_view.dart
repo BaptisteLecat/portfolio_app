@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_app/presentation/feature/account/screen/account_screen.dart';
+import 'package:portfolio_app/presentation/feature/home/bloc/wakatime_bloc.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/code_time_chart.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/github_data.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/mission_list.dart';
@@ -165,8 +167,24 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        CodeTimeChart(),
+                      children: [
+                        BlocBuilder<WakatimeBloc, WakatimeState>(
+                          builder: (context, state) {
+                            switch (state.status) {
+                              case WakatimeStatus.success:
+                                return CodeTimeChart(
+                                  wakatimeCodeActivities:
+                                      state.wakatimeCodeActivities!,
+                                );
+                              case WakatimeStatus.failure:
+                                return Center(
+                                    child: Text("Une erreur s'est produite"));
+                              default:
+                                return Center(
+                                    child: CircularProgressIndicator());
+                            }
+                          },
+                        ),
                         SizedBox(
                           width: 14,
                         ),
