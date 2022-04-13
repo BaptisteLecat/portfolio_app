@@ -6,7 +6,7 @@ class AuthorRepository {
   dataAuthorRepository.AuthorRepository _authorRepository =
       dataAuthorRepository.AuthorRepository();
 
-  Future<List<Author>> getOne(Contract author) async {
+  Future<List<Author>> getOne(Author author) async {
     return Author.fromDataModel(
         await _authorRepository.fetchOne(id: author.id!));
   }

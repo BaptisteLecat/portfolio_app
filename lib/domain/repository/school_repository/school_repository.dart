@@ -6,7 +6,7 @@ class SchoolRepository {
   dataSchoolRepository.SchoolRepository _schoolRepository =
       dataSchoolRepository.SchoolRepository();
 
-  Future<List<School>> getOne(Contract school) async {
+  Future<List<School>> getOne(School school) async {
     return School.fromDataModel(
         await _schoolRepository.fetchOne(id: school.id!));
   }

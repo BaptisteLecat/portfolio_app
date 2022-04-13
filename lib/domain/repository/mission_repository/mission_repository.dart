@@ -6,7 +6,7 @@ class MissionRepository {
   dataMissionRepository.MissionRepository _missionRepository =
       dataMissionRepository.MissionRepository();
 
-  Future<List<Mission>> getOne(Contract mission) async {
+  Future<List<Mission>> getOne(Mission mission) async {
     return Mission.fromDataModel(
         await _missionRepository.fetchOne(id: mission.id!));
   }

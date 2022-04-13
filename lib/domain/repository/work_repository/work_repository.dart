@@ -6,7 +6,7 @@ class WorkRepository {
   dataWorkRepository.WorkRepository _workRepository =
       dataWorkRepository.WorkRepository();
 
-  Future<List<Work>> getOne(Contract work) async {
+  Future<List<Work>> getOne(Work work) async {
     return Work.fromDataModel(await _workRepository.fetchOne(id: work.id!));
   }
 

@@ -6,7 +6,7 @@ class CourseRepository {
   dataCourseRepository.CourseRepository _courseRepository =
       dataCourseRepository.CourseRepository();
 
-  Future<List<Course>> getOne(Contract course) async {
+  Future<List<Course>> getOne(Course course) async {
     return Course.fromDataModel(
         await _courseRepository.fetchOne(id: course.id!));
   }

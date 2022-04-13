@@ -7,7 +7,7 @@ class ThemeRepository {
   dataThemeRepository.ThemeRepository _themeRepository =
       dataThemeRepository.ThemeRepository();
 
-  Future<List<Theme>> getOne(Contract theme) async {
+  Future<List<Theme>> getOne(Theme theme) async {
     return Theme.fromDataModel(await _themeRepository.fetchOne(id: theme.id!));
   }
 

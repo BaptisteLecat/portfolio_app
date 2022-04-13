@@ -6,7 +6,7 @@ class LocationRepository {
   dataLocationRepository.LocationRepository _locationRepository =
       dataLocationRepository.LocationRepository();
 
-  Future<List<Location>> getOne(Contract location) async {
+  Future<List<Location>> getOne(Location location) async {
     return Location.fromDataModel(
         await _locationRepository.fetchOne(id: location.id!));
   }
