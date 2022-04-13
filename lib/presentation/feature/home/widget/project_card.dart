@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/common/functions/date_functions.dart';
+import 'package:portfolio_app/domain/entity/entity.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class ProjectCard extends StatelessWidget {
   final String? name;
   final String? picture;
+  final DateTime? start;
+  final DateTime? end;
+  final Company? company;
+  final School? school;
   const ProjectCard({
     Key? key,
     required this.name,
     required this.picture,
+    required this.start,
+    required this.end,
+    required this.company,
+    required this.school,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 14),
-      height: 220,
+      height: 230,
       width: 180,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(12)),
@@ -43,32 +53,39 @@ class ProjectCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("28 Nov - 16 Dec",
+                      Text(
+                          (start != null && end != null)
+                              ? "${start!.day} ${monthFromMonthIndex(start!.month)} - ${end!.day} ${monthFromMonthIndex(end!.month)}"
+                              : "En cours",
                           style: Theme.of(context)
                               .textTheme
-                              .bodyText2!
+                              .bodyText1!
                               .copyWith(color: secondaryColorBrighter)),
                       Text("$name",
                           style: Theme.of(context)
                               .textTheme
-                              .headline6!
+                              .headline5!
                               .copyWith(color: secondaryColor)),
                       Flex(
                           direction: Axis.horizontal,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            const Icon(Icons.work, color: secondaryColor),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
-                                child: Icon(Icons.punch_clock,
-                                    color: secondaryColor)),
-                            Expanded(
-                              flex: 2,
-                              child: Text("Windle",
+                              child: Text(
+                                  (company != null)
+                                      ? "${company!.name}"
+                                      : (school != null)
+                                          ? "${school!.name}"
+                                          : "En indépendant",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2!
+                                      .bodyText1!
                                       .copyWith(color: primaryColor)),
                             ),
-                            Expanded(flex: 2, child: Container())
                           ])
                     ],
                   ),

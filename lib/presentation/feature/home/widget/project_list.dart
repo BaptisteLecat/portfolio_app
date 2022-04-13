@@ -31,7 +31,7 @@ class ProjectList extends StatelessWidget {
             height: 10,
           ),
           SizedBox(
-            height: 220,
+            height: 230,
             child: BlocBuilder<ProjectBloc, ProjectState>(
               buildWhen: ((previous, current) =>
                   previous.projects != current.projects),
@@ -52,7 +52,13 @@ class ProjectList extends StatelessWidget {
                                   ));
                             }),
                             child: ProjectCard(
-                                name: project.name, picture: project.picture));
+                              name: project.name,
+                              picture: project.picture,
+                              start: project.start,
+                              end: project.end,
+                              company: project.company,
+                              school: project.school,
+                            ));
                       }),
                     );
                   case ProjectStatus.failure:
