@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio_app/presentation/feature/project/bloc/project_bloc.dart';
 import 'package:portfolio_app/presentation/feature/project/widget/project_info_card.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
@@ -21,8 +23,55 @@ class ProjectView extends StatelessWidget {
                           padding: const EdgeInsets.all(20),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: Container(
-                              color: primaryColor,
+                            child: BlocBuilder<ProjectBloc, ProjectState>(
+                              builder: (context, state) {
+                                switch (state.status) {
+                                  case ProjectStatus.success:
+                                  case ProjectStatus.select:
+                                    return BlocBuilder<ProjectBloc,
+                                        ProjectState>(
+                                      buildWhen: ((previous, current) =>
+                                          previous.project != current.project),
+                                      builder: (context, state) {
+                                        switch (state.status) {
+                                          case ProjectStatus.success:
+                                          case ProjectStatus.select:
+                                            return Image.network(
+                                              "${state.project.picture}",
+                                              fit: BoxFit.fill,
+                                              errorBuilder: ((context, error,
+                                                      stackTrace) =>
+                                                  Container(
+                                                    color: primaryColor,
+                                                  )),
+                                            );
+                                          case ProjectStatus.failure:
+                                            return Container(
+                                              color: primaryColor,
+                                              child: Center(
+                                                child: Text(
+                                                    "Une erreur est survenue"),
+                                              ),
+                                            );
+                                          default:
+                                            return Container(
+                                              color: primaryColor,
+                                              child: Center(
+                                                  child:
+                                                      CircularProgressIndicator()),
+                                            );
+                                        }
+                                      },
+                                    );
+                                  case ProjectStatus.failure:
+                                    return Center(
+                                      child: Text("Une erreur est survenue"),
+                                    );
+                                  default:
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                }
+                              },
                             ),
                           )),
                     ),
@@ -34,24 +83,59 @@ class ProjectView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                "Application Festivapp",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline1!
-                                    .copyWith(color: secondaryColor),
+                              BlocBuilder<ProjectBloc, ProjectState>(
+                                buildWhen: ((previous, current) =>
+                                    previous.project != current.project),
+                                builder: (context, state) {
+                                  switch (state.status) {
+                                    case ProjectStatus.success:
+                                    case ProjectStatus.select:
+                                      return Text(
+                                        "${state.project.name}",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline1!
+                                            .copyWith(color: primaryColor),
+                                      );
+                                    case ProjectStatus.failure:
+                                      return Center(
+                                        child: Text("Une erreur est survenue"),
+                                      );
+                                    default:
+                                      return Center(
+                                          child: CircularProgressIndicator());
+                                  }
+                                },
                               ),
                               SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                """It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English""",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        fontSize: 16,
-                                        color: secondaryColorBrighter),
+                              BlocBuilder<ProjectBloc, ProjectState>(
+                                buildWhen: ((previous, current) =>
+                                    previous.project != current.project),
+                                builder: (context, state) {
+                                  switch (state.status) {
+                                    case ProjectStatus.success:
+                                    case ProjectStatus.select:
+                                      return Text(
+                                        "${state.project.description}",
+                                        textAlign: TextAlign.justify,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1!
+                                            .copyWith(
+                                                fontSize: 16,
+                                                color: secondaryColorBrighter),
+                                      );
+                                    case ProjectStatus.failure:
+                                      return Center(
+                                        child: Text("Une erreur est survenue"),
+                                      );
+                                    default:
+                                      return Center(
+                                          child: CircularProgressIndicator());
+                                  }
+                                },
                               ),
                               SizedBox(
                                 height: 20,

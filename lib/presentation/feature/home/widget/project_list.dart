@@ -38,6 +38,7 @@ class ProjectList extends StatelessWidget {
               builder: (context, state) {
                 switch (state.status) {
                   case ProjectStatus.success:
+                  case ProjectStatus.initial:
                     return ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: state.projects.length,
@@ -45,11 +46,16 @@ class ProjectList extends StatelessWidget {
                         Project project = state.projects[index];
                         return GestureDetector(
                             onTap: (() {
+                              context
+                                  .read<ProjectBloc>()
+                                  .add(ProjectSelect(project: project));
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => ProjectScreen(),
-                                  ));
+                                  )).then((value) {
+                                context.read<ProjectBloc>().add(ProjectReset());
+                              });
                             }),
                             child: ProjectCard(
                               name: project.name,

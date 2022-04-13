@@ -26,7 +26,7 @@ class _$ProjectTearOff {
       {String? iri,
       int? id,
       String? name,
-      String? content,
+      String? description,
       String? picture,
       DateTime? start,
       DateTime? end,
@@ -36,7 +36,7 @@ class _$ProjectTearOff {
       iri: iri,
       id: id,
       name: name,
-      content: content,
+      description: description,
       picture: picture,
       start: start,
       end: end,
@@ -58,7 +58,7 @@ mixin _$Project {
   String? get iri => throw _privateConstructorUsedError;
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
   DateTime? get start => throw _privateConstructorUsedError;
   DateTime? get end => throw _privateConstructorUsedError;
@@ -78,7 +78,7 @@ abstract class $ProjectCopyWith<$Res> {
       {String? iri,
       int? id,
       String? name,
-      String? content,
+      String? description,
       String? picture,
       DateTime? start,
       DateTime? end,
@@ -102,7 +102,7 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
     Object? iri = freezed,
     Object? id = freezed,
     Object? name = freezed,
-    Object? content = freezed,
+    Object? description = freezed,
     Object? picture = freezed,
     Object? start = freezed,
     Object? end = freezed,
@@ -122,9 +122,9 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       picture: picture == freezed
           ? _value.picture
@@ -181,7 +181,7 @@ abstract class _$ProjectCopyWith<$Res> implements $ProjectCopyWith<$Res> {
       {String? iri,
       int? id,
       String? name,
-      String? content,
+      String? description,
       String? picture,
       DateTime? start,
       DateTime? end,
@@ -208,7 +208,7 @@ class __$ProjectCopyWithImpl<$Res> extends _$ProjectCopyWithImpl<$Res>
     Object? iri = freezed,
     Object? id = freezed,
     Object? name = freezed,
-    Object? content = freezed,
+    Object? description = freezed,
     Object? picture = freezed,
     Object? start = freezed,
     Object? end = freezed,
@@ -228,9 +228,9 @@ class __$ProjectCopyWithImpl<$Res> extends _$ProjectCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       picture: picture == freezed
           ? _value.picture
@@ -263,7 +263,7 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
       {this.iri,
       this.id,
       this.name,
-      this.content,
+      this.description,
       this.picture,
       this.start,
       this.end,
@@ -281,7 +281,7 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
   @override
   final String? name;
   @override
-  final String? content;
+  final String? description;
   @override
   final String? picture;
   @override
@@ -295,7 +295,7 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Project(iri: $iri, id: $id, name: $name, content: $content, picture: $picture, start: $start, end: $end, company: $company, school: $school)';
+    return 'Project(iri: $iri, id: $id, name: $name, description: $description, picture: $picture, start: $start, end: $end, company: $company, school: $school)';
   }
 
   @override
@@ -306,7 +306,7 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('iri', iri))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('content', content))
+      ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('picture', picture))
       ..add(DiagnosticsProperty('start', start))
       ..add(DiagnosticsProperty('end', end))
@@ -322,7 +322,8 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.iri, iri) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.picture, picture) &&
             const DeepCollectionEquality().equals(other.start, start) &&
             const DeepCollectionEquality().equals(other.end, end) &&
@@ -336,7 +337,7 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(iri),
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(picture),
       const DeepCollectionEquality().hash(start),
       const DeepCollectionEquality().hash(end),
@@ -359,7 +360,7 @@ abstract class _Project extends Project {
       {String? iri,
       int? id,
       String? name,
-      String? content,
+      String? description,
       String? picture,
       DateTime? start,
       DateTime? end,
@@ -376,7 +377,7 @@ abstract class _Project extends Project {
   @override
   String? get name;
   @override
-  String? get content;
+  String? get description;
   @override
   String? get picture;
   @override

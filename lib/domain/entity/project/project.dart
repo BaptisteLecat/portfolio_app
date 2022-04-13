@@ -12,7 +12,7 @@ class Project with _$Project {
     String? iri,
     int? id,
     String? name,
-    String? content,
+    String? description,
     String? picture,
     DateTime? start,
     DateTime? end,

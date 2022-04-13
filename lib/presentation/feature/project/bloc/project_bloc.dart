@@ -38,7 +38,6 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
       status: ProjectStatus.initial,
       message: '',
       project: Project.empty,
-      projects: const [],
     ));
   }
 

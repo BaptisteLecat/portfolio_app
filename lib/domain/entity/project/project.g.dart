@@ -10,7 +10,7 @@ _$_Project _$$_ProjectFromJson(Map<String, dynamic> json) => _$_Project(
       iri: json['iri'] as String?,
       id: json['id'] as int?,
       name: json['name'] as String?,
-      content: json['content'] as String?,
+      description: json['description'] as String?,
       picture: json['picture'] as String?,
       start: json['start'] == null
           ? null
@@ -29,7 +29,7 @@ Map<String, dynamic> _$$_ProjectToJson(_$_Project instance) =>
       'iri': instance.iri,
       'id': instance.id,
       'name': instance.name,
-      'content': instance.content,
+      'description': instance.description,
       'picture': instance.picture,
       'start': instance.start?.toIso8601String(),
       'end': instance.end?.toIso8601String(),
