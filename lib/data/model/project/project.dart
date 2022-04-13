@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:portfolio_app/data/model/company/company.dart';
+import 'package:portfolio_app/data/model/school/school.dart';
 
 part 'project.g.dart';
 
@@ -11,12 +13,20 @@ class Project {
   final String? name;
   final String? description;
   final String? picture;
+  final DateTime? start;
+  final DateTime? end;
+  final Company? company;
+  final School? school;
   const Project({
     this.iri,
     this.id,
     this.name,
     this.description,
     this.picture,
+    this.start,
+    this.end,
+    this.company,
+    this.school,
   });
 
   Map<String, dynamic> toJson() => _$ProjectToJson(this);
@@ -46,6 +56,10 @@ class Project {
       'name': name,
       'description': description,
       'picture': picture,
+      'start': start?.toIso8601String(),
+      'end': end?.toIso8601String(),
+      'company': company?.toMap(),
+      'school': school?.toMap(),
     };
   }
 
@@ -56,6 +70,10 @@ class Project {
       name: map['name'],
       description: map['description'],
       picture: map['picture'],
+      start: map['start'],
+      end: map['end'],
+      company: map['company'] != null ? Company.fromMap(map['company']) : null,
+      school: map['school'] != null ? School.fromMap(map['school']) : null,
     );
   }
 }

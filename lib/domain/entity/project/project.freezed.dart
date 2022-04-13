@@ -23,13 +23,25 @@ class _$ProjectTearOff {
   const _$ProjectTearOff();
 
   _Project call(
-      {String? iri, int? id, String? name, String? content, String? picture}) {
+      {String? iri,
+      int? id,
+      String? name,
+      String? content,
+      String? picture,
+      DateTime? start,
+      DateTime? end,
+      Company? company,
+      School? school}) {
     return _Project(
       iri: iri,
       id: id,
       name: name,
       content: content,
       picture: picture,
+      start: start,
+      end: end,
+      company: company,
+      school: school,
     );
   }
 
@@ -48,6 +60,10 @@ mixin _$Project {
   String? get name => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
+  DateTime? get start => throw _privateConstructorUsedError;
+  DateTime? get end => throw _privateConstructorUsedError;
+  Company? get company => throw _privateConstructorUsedError;
+  School? get school => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +75,18 @@ abstract class $ProjectCopyWith<$Res> {
   factory $ProjectCopyWith(Project value, $Res Function(Project) then) =
       _$ProjectCopyWithImpl<$Res>;
   $Res call(
-      {String? iri, int? id, String? name, String? content, String? picture});
+      {String? iri,
+      int? id,
+      String? name,
+      String? content,
+      String? picture,
+      DateTime? start,
+      DateTime? end,
+      Company? company,
+      School? school});
+
+  $CompanyCopyWith<$Res>? get company;
+  $SchoolCopyWith<$Res>? get school;
 }
 
 /// @nodoc
@@ -77,6 +104,10 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
     Object? name = freezed,
     Object? content = freezed,
     Object? picture = freezed,
+    Object? start = freezed,
+    Object? end = freezed,
+    Object? company = freezed,
+    Object? school = freezed,
   }) {
     return _then(_value.copyWith(
       iri: iri == freezed
@@ -99,7 +130,45 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as String?,
+      start: start == freezed
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      end: end == freezed
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      company: company == freezed
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as Company?,
+      school: school == freezed
+          ? _value.school
+          : school // ignore: cast_nullable_to_non_nullable
+              as School?,
     ));
+  }
+
+  @override
+  $CompanyCopyWith<$Res>? get company {
+    if (_value.company == null) {
+      return null;
+    }
+
+    return $CompanyCopyWith<$Res>(_value.company!, (value) {
+      return _then(_value.copyWith(company: value));
+    });
+  }
+
+  @override
+  $SchoolCopyWith<$Res>? get school {
+    if (_value.school == null) {
+      return null;
+    }
+
+    return $SchoolCopyWith<$Res>(_value.school!, (value) {
+      return _then(_value.copyWith(school: value));
+    });
   }
 }
 
@@ -109,7 +178,20 @@ abstract class _$ProjectCopyWith<$Res> implements $ProjectCopyWith<$Res> {
       __$ProjectCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? iri, int? id, String? name, String? content, String? picture});
+      {String? iri,
+      int? id,
+      String? name,
+      String? content,
+      String? picture,
+      DateTime? start,
+      DateTime? end,
+      Company? company,
+      School? school});
+
+  @override
+  $CompanyCopyWith<$Res>? get company;
+  @override
+  $SchoolCopyWith<$Res>? get school;
 }
 
 /// @nodoc
@@ -128,6 +210,10 @@ class __$ProjectCopyWithImpl<$Res> extends _$ProjectCopyWithImpl<$Res>
     Object? name = freezed,
     Object? content = freezed,
     Object? picture = freezed,
+    Object? start = freezed,
+    Object? end = freezed,
+    Object? company = freezed,
+    Object? school = freezed,
   }) {
     return _then(_Project(
       iri: iri == freezed
@@ -150,6 +236,22 @@ class __$ProjectCopyWithImpl<$Res> extends _$ProjectCopyWithImpl<$Res>
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
               as String?,
+      start: start == freezed
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      end: end == freezed
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      company: company == freezed
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as Company?,
+      school: school == freezed
+          ? _value.school
+          : school // ignore: cast_nullable_to_non_nullable
+              as School?,
     ));
   }
 }
@@ -157,7 +259,16 @@ class __$ProjectCopyWithImpl<$Res> extends _$ProjectCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Project extends _Project with DiagnosticableTreeMixin {
-  const _$_Project({this.iri, this.id, this.name, this.content, this.picture})
+  const _$_Project(
+      {this.iri,
+      this.id,
+      this.name,
+      this.content,
+      this.picture,
+      this.start,
+      this.end,
+      this.company,
+      this.school})
       : super._();
 
   factory _$_Project.fromJson(Map<String, dynamic> json) =>
@@ -173,10 +284,18 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
   final String? content;
   @override
   final String? picture;
+  @override
+  final DateTime? start;
+  @override
+  final DateTime? end;
+  @override
+  final Company? company;
+  @override
+  final School? school;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Project(iri: $iri, id: $id, name: $name, content: $content, picture: $picture)';
+    return 'Project(iri: $iri, id: $id, name: $name, content: $content, picture: $picture, start: $start, end: $end, company: $company, school: $school)';
   }
 
   @override
@@ -188,7 +307,11 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('content', content))
-      ..add(DiagnosticsProperty('picture', picture));
+      ..add(DiagnosticsProperty('picture', picture))
+      ..add(DiagnosticsProperty('start', start))
+      ..add(DiagnosticsProperty('end', end))
+      ..add(DiagnosticsProperty('company', company))
+      ..add(DiagnosticsProperty('school', school));
   }
 
   @override
@@ -200,7 +323,11 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality().equals(other.picture, picture));
+            const DeepCollectionEquality().equals(other.picture, picture) &&
+            const DeepCollectionEquality().equals(other.start, start) &&
+            const DeepCollectionEquality().equals(other.end, end) &&
+            const DeepCollectionEquality().equals(other.company, company) &&
+            const DeepCollectionEquality().equals(other.school, school));
   }
 
   @override
@@ -210,7 +337,11 @@ class _$_Project extends _Project with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(picture));
+      const DeepCollectionEquality().hash(picture),
+      const DeepCollectionEquality().hash(start),
+      const DeepCollectionEquality().hash(end),
+      const DeepCollectionEquality().hash(company),
+      const DeepCollectionEquality().hash(school));
 
   @JsonKey(ignore: true)
   @override
@@ -229,7 +360,11 @@ abstract class _Project extends Project {
       int? id,
       String? name,
       String? content,
-      String? picture}) = _$_Project;
+      String? picture,
+      DateTime? start,
+      DateTime? end,
+      Company? company,
+      School? school}) = _$_Project;
   const _Project._() : super._();
 
   factory _Project.fromJson(Map<String, dynamic> json) = _$_Project.fromJson;
@@ -244,6 +379,14 @@ abstract class _Project extends Project {
   String? get content;
   @override
   String? get picture;
+  @override
+  DateTime? get start;
+  @override
+  DateTime? get end;
+  @override
+  Company? get company;
+  @override
+  School? get school;
   @override
   @JsonKey(ignore: true)
   _$ProjectCopyWith<_Project> get copyWith =>
