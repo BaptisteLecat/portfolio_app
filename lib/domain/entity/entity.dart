@@ -8,3 +8,5 @@ export 'work/work.dart';
 export 'technology/technology.dart';
 export 'mission/mission.dart';
 export 'author/author.dart';
+export 'project/project.dart';
+export 'rubric/rubric.dart';
