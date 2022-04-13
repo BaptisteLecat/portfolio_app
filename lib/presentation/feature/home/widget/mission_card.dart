@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class MissionCard extends StatelessWidget {
+  final String? title;
   const MissionCard({
     Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -34,7 +36,7 @@ class MissionCard extends StatelessWidget {
             Expanded(
                 flex: 5,
                 child: Container(
-                  child: Text("Gestion de la modification d'email",
+                  child: Text("$title",
                       style: Theme.of(context)
                           .textTheme
                           .headline6!

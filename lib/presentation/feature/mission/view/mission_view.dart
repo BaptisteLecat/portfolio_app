@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:portfolio_app/presentation/feature/mission/bloc/mission_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class MissionView extends StatelessWidget {
@@ -31,86 +33,120 @@ class MissionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Mission"),
+      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Html(
-            data: kHtml,
-            customRenders: {
-              headline1Matcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.headline1!),
-              ),
-              headline2Matcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.headline2!),
-              ),
-              headline3Matcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.headline3!),
-              ),
-              headline4Matcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.headline4!),
-              ),
-              headline5Matcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.headline5!),
-              ),
-              headline6Matcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.headline6!),
-              ),
-              paragraphMatcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.bodyText1!),
-              ),
-              liMatcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Text(
-                    "${context.tree.element!.text}",
-                    style: Theme.of(context.buildContext).textTheme.bodyText1!),
-              ),
-              imgMatcher(): CustomRender.widget(
-                widget: (context, buildChildren) => Image.network(
-                    "${context.tree.element!.attributes["src"]}",
-                    height: 100,
-                    width: 200),
-              ),
-              iframeYT(): CustomRender.widget(widget: (context, buildChildren) {
-                double? width =
-                    double.tryParse(context.tree.attributes['width'] ?? "");
-                double? height =
-                    double.tryParse(context.tree.attributes['height'] ?? "");
-                print(height);
-                print(width);
-                return Container(
-                  color: Colors.red,
-                  width: 100,
-                  height: 100,
-                  child: WebView(
-                    initialUrl: context.tree.attributes['src']!,
-                    javascriptMode: JavascriptMode.unrestricted,
-                    navigationDelegate: (NavigationRequest request) async {
-                      //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
-                      if (!request.url.contains("youtube.com")) {
-                        return NavigationDecision.prevent;
-                      } else {
-                        return NavigationDecision.navigate;
-                      }
+        child: BlocBuilder<MissionBloc, MissionState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case MissionStatus.select:
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Html(
+                    data: state.mission.content,
+                    customRenders: {
+                      headline1Matcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .headline1!),
+                      ),
+                      headline2Matcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .headline2!),
+                      ),
+                      headline3Matcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .headline3!),
+                      ),
+                      headline4Matcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .headline4!),
+                      ),
+                      headline5Matcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .headline5!),
+                      ),
+                      headline6Matcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .headline6!),
+                      ),
+                      paragraphMatcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .bodyText1!),
+                      ),
+                      liMatcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Text(
+                            "${context.tree.element!.text}",
+                            style: Theme.of(context.buildContext)
+                                .textTheme
+                                .bodyText1!),
+                      ),
+                      imgMatcher(): CustomRender.widget(
+                        widget: (context, buildChildren) => Image.network(
+                            "${context.tree.element!.attributes["src"]}",
+                            height: 100,
+                            width: 200),
+                      ),
+                      iframeYT():
+                          CustomRender.widget(widget: (context, buildChildren) {
+                        double? width = double.tryParse(
+                            context.tree.attributes['width'] ?? "");
+                        double? height = double.tryParse(
+                            context.tree.attributes['height'] ?? "");
+                        print(height);
+                        print(width);
+                        return Container(
+                          color: Colors.red,
+                          width: 100,
+                          height: 100,
+                          child: WebView(
+                            initialUrl: context.tree.attributes['src']!,
+                            javascriptMode: JavascriptMode.unrestricted,
+                            navigationDelegate:
+                                (NavigationRequest request) async {
+                              //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
+                              if (!request.url.contains("youtube.com")) {
+                                return NavigationDecision.prevent;
+                              } else {
+                                return NavigationDecision.navigate;
+                              }
+                            },
+                          ),
+                        );
+                      }),
                     },
+                    tagsList: Html.tags..addAll(["bird", "flutter"]),
                   ),
                 );
-              }),
-            },
-            tagsList: Html.tags..addAll(["bird", "flutter"]),
-          ),
+              case MissionStatus.failure:
+                return Center(
+                  child: Text("Une erreur s'est produite"),
+                );
+              default:
+                return Center(child: CircularProgressIndicator());
+            }
+          },
         ),
       ),
     );

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio_app/domain/entity/entity.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/mission_card.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
+import 'package:portfolio_app/presentation/feature/mission/bloc/mission_bloc.dart';
 import 'package:portfolio_app/presentation/feature/mission/screen/mission_screen.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
@@ -30,19 +33,40 @@ class MissionList extends StatelessWidget {
           ),
           SizedBox(
             height: 74,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5,
-                itemBuilder: ((context, index) {
-                  return GestureDetector(
-                      onTap: (() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MissionScreen()));
-                      }),
-                      child: MissionCard());
-                })),
+            child: BlocBuilder<MissionBloc, MissionState>(
+              buildWhen: ((previous, current) =>
+                  (previous.missions != current.missions)),
+              builder: (context, state) {
+                switch (state.status) {
+                  case MissionStatus.success:
+                    return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.missions.length,
+                        itemBuilder: ((context, index) {
+                          Mission mission = state.missions[index];
+                          return GestureDetector(
+                              onTap: (() {
+                                context
+                                    .read<MissionBloc>()
+                                    .add(MissionSelect(mission: mission));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MissionScreen()));
+                              }),
+                              child: MissionCard(
+                                title: mission.title,
+                              ));
+                        }));
+                  case MissionStatus.failure:
+                    return Center(
+                      child: Text("Une erreur s'est produite."),
+                    );
+                  default:
+                    return Center(child: CircularProgressIndicator());
+                }
+              },
+            ),
           )
         ]);
   }

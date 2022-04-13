@@ -48,7 +48,7 @@ class Mission {
       'id': id,
       'title': title,
       'content': content,
-      'created_at': created_at,
+      'created_at': created_at?.toIso8601String(),
       'author': author?.toMap(),
     };
   }
@@ -59,7 +59,7 @@ class Mission {
       id: map['id']?.toInt(),
       title: map['title'],
       content: map['content'],
-      created_at: map['created_at'],
+      created_at: map['created_at']?.toIso8601String(),
       author: map['author'] != null ? Author.fromMap(map['author']) : null,
     );
   }
