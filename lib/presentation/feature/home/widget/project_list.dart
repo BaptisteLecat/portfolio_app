@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio_app/domain/entity/entity.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
+import 'package:portfolio_app/presentation/feature/project/bloc/project_bloc.dart';
 import 'package:portfolio_app/presentation/feature/project/screen/project_screen.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
@@ -29,20 +32,37 @@ class ProjectList extends StatelessWidget {
           ),
           SizedBox(
             height: 220,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: ((context, index) {
-                return GestureDetector(
-                    onTap: (() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProjectScreen(),
-                          ));
-                    }),
-                    child: ProjectCard());
-              }),
+            child: BlocBuilder<ProjectBloc, ProjectState>(
+              buildWhen: ((previous, current) =>
+                  previous.projects != current.projects),
+              builder: (context, state) {
+                switch (state.status) {
+                  case ProjectStatus.success:
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.projects.length,
+                      itemBuilder: ((context, index) {
+                        Project project = state.projects[index];
+                        return GestureDetector(
+                            onTap: (() {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProjectScreen(),
+                                  ));
+                            }),
+                            child: ProjectCard(
+                                name: project.name, picture: project.picture));
+                      }),
+                    );
+                  case ProjectStatus.failure:
+                    return const Center(
+                      child: Text("Une erreur est survenue"),
+                    );
+                  default:
+                    return const Center(child: CircularProgressIndicator());
+                }
+              },
             ),
           )
         ]);

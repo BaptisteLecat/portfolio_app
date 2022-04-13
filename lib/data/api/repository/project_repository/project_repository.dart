@@ -10,7 +10,7 @@ class ProjectRepository extends BaseRepository with fetcher.MainFetcher {
   Future fetchAll(
       {String? params, Map<String, String>? headers, bool? toJsonLd}) async {
     var response = await get(url: '$ressource$params', toJsonLd: toJsonLd);
-    return Project.listFromJson(json.encode(response.content));
+    return Project.listFromJson(json.decode(response.content));
   }
 
   @override

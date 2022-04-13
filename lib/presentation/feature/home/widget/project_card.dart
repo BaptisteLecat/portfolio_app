@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class ProjectCard extends StatelessWidget {
+  final String? name;
+  final String? picture;
   const ProjectCard({
     Key? key,
+    required this.name,
+    required this.picture,
   }) : super(key: key);
 
   @override
@@ -21,13 +25,15 @@ class ProjectCard extends StatelessWidget {
             Expanded(
               flex: 5,
               child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12)),
-                child: Container(
-                  color: primaryColor,
-                ),
-              ),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12)),
+                  child: Image.network(
+                    "$picture",
+                    errorBuilder: ((context, error, stackTrace) => Container(
+                          color: primaryColor,
+                        )),
+                  )),
             ),
             Expanded(
                 flex: 6,
@@ -42,7 +48,7 @@ class ProjectCard extends StatelessWidget {
                               .textTheme
                               .bodyText2!
                               .copyWith(color: secondaryColorBrighter)),
-                      Text("Gestion de la modification d'email",
+                      Text("$name",
                           style: Theme.of(context)
                               .textTheme
                               .headline6!

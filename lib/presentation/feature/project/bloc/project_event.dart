@@ -1,4 +1,4 @@
-/*part of 'project_bloc.dart';
+part of 'project_bloc.dart';
 
 abstract class ProjectEvent extends Equatable {
   const ProjectEvent([List props = const []]);
@@ -33,4 +33,4 @@ class ProjectUpdate extends ProjectEvent {
 class ProjectDelete extends ProjectEvent {
   final Project project;
   ProjectDelete({required this.project}) : super([project]);
-}*/
+}

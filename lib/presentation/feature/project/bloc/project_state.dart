@@ -1,4 +1,4 @@
-/*part of 'project_bloc.dart';
+part of 'project_bloc.dart';
 
 enum ProjectStatus {
   initial,
@@ -57,4 +57,4 @@ class ProjectState extends Equatable {
       project: project ?? this.project,
     );
   }
-}*/
+}
