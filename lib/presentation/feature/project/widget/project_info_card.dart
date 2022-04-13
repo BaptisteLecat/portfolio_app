@@ -71,7 +71,7 @@ class _ProjectInfoCardState extends State<ProjectInfoCard> {
                           ),
                           Icon(
                             (isActive) ? Icons.expand_less : Icons.expand_more,
-                            color: secondaryColorBrighter,
+                            color: secondaryColor,
                             size: 28,
                           ),
                         ],

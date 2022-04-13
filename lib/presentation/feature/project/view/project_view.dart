@@ -117,15 +117,11 @@ class ProjectView extends StatelessWidget {
                                   switch (state.status) {
                                     case ProjectStatus.success:
                                     case ProjectStatus.select:
-                                      return Text(
-                                        "${state.project.description}",
-                                        textAlign: TextAlign.justify,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1!
-                                            .copyWith(
-                                                fontSize: 16,
-                                                color: secondaryColorBrighter),
+                                      return SizedBox(
+                                        child: ReadMore(
+                                          content:
+                                              "${state.project.description}",
+                                        ),
                                       );
                                     case ProjectStatus.failure:
                                       return Center(
@@ -155,5 +151,66 @@ class ProjectView extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ReadMore extends StatefulWidget {
+  final String content;
+  const ReadMore({
+    Key? key,
+    required this.content,
+  }) : super(key: key);
+
+  @override
+  State<ReadMore> createState() => _ReadMoreState();
+}
+
+class _ReadMoreState extends State<ReadMore> {
+  bool isActive = false;
+  @override
+  Widget build(BuildContext context) {
+    return (widget.content.length > 300)
+        ? IntrinsicHeight(
+            child: Column(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: (isActive) ? null : 114,
+                    child: Text(
+                      widget.content,
+                      textAlign: TextAlign.justify,
+                      //overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontSize: 16, color: secondaryColorBrighter),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () => setState(() {
+                        isActive = !isActive;
+                      }),
+                      child: Icon(
+                        (isActive) ? Icons.expand_less : Icons.expand_more,
+                        color: secondaryColor,
+                        size: 28,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
+        : Text(
+            widget.content,
+            textAlign: TextAlign.justify,
+            //overflow: TextOverflow.ellipsis,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(fontSize: 16, color: secondaryColorBrighter),
+          );
   }
 }

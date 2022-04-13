@@ -33,7 +33,7 @@ class ProjectCard extends StatelessWidget {
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Expanded(
-              flex: 5,
+              flex: 8,
               child: ClipRRect(
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(12),
@@ -43,10 +43,11 @@ class ProjectCard extends StatelessWidget {
                     errorBuilder: ((context, error, stackTrace) => Container(
                           color: primaryColor,
                         )),
+                    fit: BoxFit.fill,
                   )),
             ),
             Expanded(
-                flex: 6,
+                flex: 7,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
