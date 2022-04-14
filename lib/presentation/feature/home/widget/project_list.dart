@@ -34,7 +34,9 @@ class ProjectList extends StatelessWidget {
             height: 230,
             child: BlocBuilder<ProjectBloc, ProjectState>(
               buildWhen: ((previous, current) =>
-                  previous.projects != current.projects),
+                  previous.projects != current.projects &&
+                  !(previous.status == ProjectStatus.select &&
+                      current.status == ProjectStatus.initial)),
               builder: (context, state) {
                 switch (state.status) {
                   case ProjectStatus.success:
