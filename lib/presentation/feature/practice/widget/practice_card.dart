@@ -5,12 +5,14 @@ class PracticeCard extends StatelessWidget {
   final String companyName;
   final String locationLabel;
   final String title;
-  const PracticeCard(
-      {Key? key,
-      required this.companyName,
-      required this.locationLabel,
-      required this.title})
-      : super(key: key);
+  final String picture;
+  const PracticeCard({
+    Key? key,
+    required this.companyName,
+    required this.locationLabel,
+    required this.title,
+    required this.picture,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,20 @@ class PracticeCard extends StatelessWidget {
         Expanded(
           flex: 1,
           child: Center(
-            child: Container(
-                height: 54,
-                width: 54,
-                decoration: BoxDecoration(
+            child: SizedBox(
+              height: 64,
+              width: 64,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  picture,
+                  errorBuilder: (context, error, stackTrace) => Container(
                     color: primaryColor,
-                    borderRadius: BorderRadius.circular(12))),
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
           ),
         ),
         Expanded(

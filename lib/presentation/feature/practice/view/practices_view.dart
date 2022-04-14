@@ -42,9 +42,8 @@ class PracticesView extends StatelessWidget {
                     children: [
                       Text(
                         "Cursus Scolaire",
-                        style: Theme.of(context).textTheme.headline4!.copyWith(
-                              color: secondaryColor,
-                            ),
+                        style: Theme.of(context).textTheme.headline5!.copyWith(
+                            color: secondaryColor, fontWeight: FontWeight.bold),
                       ),
                       BlocBuilder<CourseBloc, CourseState>(
                         builder: (context, state) {
@@ -69,15 +68,16 @@ class PracticesView extends StatelessWidget {
                                                         ))));
                                           }),
                                           child: PracticeCard(
-                                              companyName:
-                                                  (course.school != null)
-                                                      ? "${course.school!.name}"
-                                                      : "",
-                                              title: "${course.title}",
-                                              locationLabel: (course.location !=
-                                                      null)
-                                                  ? "${course.location!.label}"
-                                                  : ""));
+                                            companyName: (course.school != null)
+                                                ? "${course.school!.name}"
+                                                : "",
+                                            title: "${course.title}",
+                                            locationLabel: (course.location !=
+                                                    null)
+                                                ? "${course.location!.label}"
+                                                : "",
+                                            picture: course.picture!,
+                                          ));
                                     })),
                               );
                             case CourseStatus.failure:
@@ -99,10 +99,8 @@ class PracticesView extends StatelessWidget {
                     children: [
                       Text(
                         "Experiences professionnelles",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4!
-                            .copyWith(color: secondaryColor),
+                        style: Theme.of(context).textTheme.headline5!.copyWith(
+                            color: secondaryColor, fontWeight: FontWeight.bold),
                       ),
                       BlocBuilder<WorkBloc, WorkState>(
                         builder: (context, state) {
@@ -134,6 +132,7 @@ class PracticesView extends StatelessWidget {
                                                     ? "${work.location!.label}"
                                                     : "",
                                             title: "${work.title}",
+                                            picture: work.picture!,
                                           ));
                                     })),
                               );
