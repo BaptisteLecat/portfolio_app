@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_app/presentation/feature/account/view/location_view.dart';
 import 'package:portfolio_app/presentation/feature/account/view/personal_data_view.dart';
 import 'package:portfolio_app/presentation/feature/account/widget/account_list.dart';
 import 'package:portfolio_app/presentation/feature/account/widget/setting_tile.dart';
@@ -73,7 +74,7 @@ class AccountView extends StatelessWidget {
                         color: secondaryColor),
                   ),
                   SettingTile(
-                    page: PersonalDataView(),
+                    page: LocationView(),
                     title: "Localisation",
                     icon: SvgPicture.asset("assets/icons/ui/marker.svg",
                         color: secondaryColor),
