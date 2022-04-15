@@ -8,11 +8,13 @@ class WorkView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverFillRemaining(
+              hasScrollBody: false,
               child: Stack(
                 children: [
                   ClipPath(
@@ -22,167 +24,134 @@ class WorkView extends StatelessWidget {
                       )),
                   Column(
                     children: [
-                      Expanded(
-                        flex: 3,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 112,
-                              width: 112,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle, color: Colors.white),
-                              child: Padding(
-                                padding: EdgeInsets.all(6),
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: primaryColor)),
+                      SizedBox(height: size.height / 8),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 112,
+                            width: 112,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, color: Colors.white),
+                            child: Padding(
+                              padding: EdgeInsets.all(6),
+                              child: CircleAvatar(
+                                child: Image.network(
+                                  work.picture!,
+                                  fit: BoxFit.fill,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      Container(color: primaryColor),
+                                ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      Expanded(
-                          flex: 8,
-                          child: Column(
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 100,
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "${work.title}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline2!
+                                        .copyWith(
+                                            color: secondaryColor,
+                                            fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    "${work.company!.name}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline5!
+                                        .copyWith(
+                                            color: secondaryColorBrighter,
+                                            fontWeight: FontWeight.bold),
+                                  ),
+                                ]),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          SizedBox(
+                            height: 120,
+                            child: JobInfo(
+                                locationName: "${work.location!.label}",
+                                contractLabel: "${work.contract!.label}",
+                                time: "${work.time}"),
+                          ),
+                          SizedBox(
+                            height: 14,
+                          ),
+                          Column(
                             children: [
-                              Expanded(
+                              SizedBox(height: 20),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
                                 child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                        "${work.title}",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2!
-                                            .copyWith(
-                                                color: secondaryColor,
-                                                fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "${work.company!.name}",
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Description",
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline5!
-                                            .copyWith(
-                                                color: secondaryColorBrighter,
-                                                fontWeight: FontWeight.bold),
-                                      ),
-                                    ]),
+                                            .copyWith(color: secondaryColor)),
+                                    SizedBox(height: 14),
+                                    Text("${work.description}",
+                                        textAlign: TextAlign.justify,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1),
+                                  ],
+                                ),
                               ),
-                              SizedBox(
-                                height: 20,
+                              SizedBox(height: 20),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Entreprise",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline5!
+                                            .copyWith(color: secondaryColor)),
+                                    SizedBox(height: 14),
+                                    Text("${work.company!.description}",
+                                        textAlign: TextAlign.justify,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1),
+                                  ],
+                                ),
                               ),
-                              Expanded(
-                                child: JobInfo(
-                                    locationName: "${work.location!.label}",
-                                    contractLabel: "${work.contract!.label}",
-                                    time: "${work.time}"),
+                              SizedBox(height: 20),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Missions",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline5!
+                                          .copyWith(color: secondaryColor)),
+                                  SizedBox(height: 14),
+                                ],
                               ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Expanded(
-                                flex: 2,
-                                child: Column(children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Container(
-                                              height: 48,
-                                              decoration: BoxDecoration(
-                                                  color: primaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(8)),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Center(
-                                                    child: Text(
-                                                  "Description",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline6!
-                                                      .copyWith(
-                                                          color: Colors.white),
-                                                )),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 48,
-                                              decoration: BoxDecoration(
-                                                  color: primaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(8)),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Center(
-                                                    child: Text(
-                                                  "Entreprise",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline6!
-                                                      .copyWith(
-                                                          color: Colors.white),
-                                                )),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 48,
-                                              decoration: BoxDecoration(
-                                                  color: primaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(8)),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Center(
-                                                    child: Text(
-                                                  "Missions",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline6!
-                                                      .copyWith(
-                                                          color: Colors.white),
-                                                )),
-                                              ),
-                                            )
-                                          ]),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 6,
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              left: 20.0,
-                                              right: 20.0,
-                                              top: 20.0,
-                                            ),
-                                            child: Text("${work.description}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyText1),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ]),
-                              )
                             ],
-                          )),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ],
@@ -224,7 +193,10 @@ class JobInfo extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text("Localisation",
-                          style: Theme.of(context).textTheme.headline6),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(color: Colors.white)),
                       Text(
                         locationName,
                         style: Theme.of(context).textTheme.bodyText1,
@@ -250,7 +222,10 @@ class JobInfo extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text("Contrat",
-                          style: Theme.of(context).textTheme.headline6),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(color: Colors.white)),
                       Text(
                         contractLabel,
                         style: Theme.of(context).textTheme.bodyText1,
@@ -276,7 +251,10 @@ class JobInfo extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text("Durée",
-                          style: Theme.of(context).textTheme.headline6),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(color: Colors.white)),
                       Text(
                         time,
                         style: Theme.of(context).textTheme.bodyText1,
