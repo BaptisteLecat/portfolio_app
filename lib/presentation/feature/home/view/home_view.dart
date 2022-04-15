@@ -7,6 +7,7 @@ import 'package:portfolio_app/presentation/feature/home/widget/github_data.dart'
 import 'package:portfolio_app/presentation/feature/home/widget/mission_list.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_list.dart';
+import 'package:portfolio_app/presentation/widget/shimmer/custom_shimmer.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 import 'package:video_player/video_player.dart';
 
@@ -188,7 +189,16 @@ class _HomeViewState extends State<HomeView> {
                             return Center(
                                 child: Text("Une erreur s'est produite"));
                           default:
-                            return Center(child: CircularProgressIndicator());
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                CustomShimmer(width: 160, height: 160),
+                                SizedBox(
+                                  width: 14,
+                                ),
+                                CustomShimmer(width: 160, height: 160),
+                              ],
+                            );
                         }
                       },
                     ),

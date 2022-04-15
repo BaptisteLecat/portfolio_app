@@ -6,6 +6,7 @@ import 'package:portfolio_app/presentation/feature/practice/bloc/work_bloc.dart'
 import 'package:portfolio_app/presentation/feature/practice/screen/course_screen.dart';
 import 'package:portfolio_app/presentation/feature/practice/screen/work_screen.dart';
 import 'package:portfolio_app/presentation/feature/practice/widget/practice_card.dart';
+import 'package:portfolio_app/presentation/widget/shimmer/shimmer_export.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class PracticesView extends StatelessWidget {
@@ -46,6 +47,8 @@ class PracticesView extends StatelessWidget {
                             color: secondaryColor, fontWeight: FontWeight.bold),
                       ),
                       BlocBuilder<CourseBloc, CourseState>(
+                        buildWhen: ((previous, current) =>
+                            previous.courses != current.courses),
                         builder: (context, state) {
                           switch (state.status) {
                             case CourseStatus.success:
@@ -85,7 +88,15 @@ class PracticesView extends StatelessWidget {
                                 child: Text("${state.message}"),
                               );
                             default:
-                              return CircularProgressIndicator();
+                              return const ShimmerList(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  customShimmer: CustomShimmer(
+                                    height: 100,
+                                    margin: EdgeInsets.symmetric(vertical: 10),
+                                  ),
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: 3);
                           }
                         },
                       ),
@@ -141,7 +152,15 @@ class PracticesView extends StatelessWidget {
                                 child: Text("${state.message}"),
                               );
                             default:
-                              return CircularProgressIndicator();
+                              return const ShimmerList(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  customShimmer: CustomShimmer(
+                                    height: 100,
+                                    margin: EdgeInsets.symmetric(vertical: 10),
+                                  ),
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: 3);
                           }
                         },
                       ),

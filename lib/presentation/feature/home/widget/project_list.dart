@@ -4,6 +4,7 @@ import 'package:portfolio_app/domain/entity/entity.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
 import 'package:portfolio_app/presentation/feature/project/bloc/project_bloc.dart';
 import 'package:portfolio_app/presentation/feature/project/screen/project_screen.dart';
+import 'package:portfolio_app/presentation/widget/shimmer/shimmer_export.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class ProjectList extends StatelessWidget {
@@ -74,7 +75,13 @@ class ProjectList extends StatelessWidget {
                       child: Text("Une erreur est survenue"),
                     );
                   default:
-                    return const Center(child: CircularProgressIndicator());
+                    return const ShimmerList(
+                        customShimmer: CustomShimmer(
+                          height: 230,
+                          width: 180,
+                          margin: EdgeInsets.symmetric(horizontal: 14.0),
+                        ),
+                        itemCount: 12);
                 }
               },
             ),

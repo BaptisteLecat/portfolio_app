@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio_app/domain/entity/entity.dart';
 import 'package:portfolio_app/presentation/feature/home/widget/mission_card.dart';
-import 'package:portfolio_app/presentation/feature/home/widget/project_card.dart';
 import 'package:portfolio_app/presentation/feature/mission/bloc/mission_bloc.dart';
 import 'package:portfolio_app/presentation/feature/mission/screen/mission_screen.dart';
+import 'package:portfolio_app/presentation/widget/shimmer/shimmer_export.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 
 class MissionList extends StatelessWidget {
@@ -63,7 +63,13 @@ class MissionList extends StatelessWidget {
                       child: Text("Une erreur s'est produite."),
                     );
                   default:
-                    return Center(child: CircularProgressIndicator());
+                    return const ShimmerList(
+                        customShimmer: CustomShimmer(
+                          height: 74,
+                          width: 260,
+                          margin: EdgeInsets.symmetric(horizontal: 14.0),
+                        ),
+                        itemCount: 12);
                 }
               },
             ),

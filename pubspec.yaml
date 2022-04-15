@@ -51,6 +51,7 @@ dependencies:
   flutter_widget_from_html_core: ^0.8.5+1
   flutter_html: ^3.0.0-alpha.2
   webview_flutter: ^3.0.2
+  shimmer: ^2.0.0
 
 dev_dependencies:
   build_runner: ^2.1.8
