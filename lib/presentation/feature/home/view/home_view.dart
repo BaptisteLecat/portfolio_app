@@ -165,31 +165,32 @@ class _HomeViewState extends State<HomeView> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        BlocBuilder<WakatimeBloc, WakatimeState>(
-                          builder: (context, state) {
-                            switch (state.status) {
-                              case WakatimeStatus.success:
-                                return CodeTimeChart(
+                    BlocBuilder<WakatimeBloc, WakatimeState>(
+                      builder: (context, state) {
+                        switch (state.status) {
+                          case WakatimeStatus.success:
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                CodeTimeChart(
                                   wakatimeCodeActivities:
                                       state.wakatimeCodeActivities!,
-                                );
-                              case WakatimeStatus.failure:
-                                return Center(
-                                    child: Text("Une erreur s'est produite"));
-                              default:
-                                return Center(
-                                    child: CircularProgressIndicator());
-                            }
-                          },
-                        ),
-                        SizedBox(
-                          width: 14,
-                        ),
-                        GithubData(),
-                      ],
+                                ),
+                                SizedBox(
+                                  width: 14,
+                                ),
+                                GithubData(
+                                  wakatimeLanguages: state.wakatimeLanguages!,
+                                ),
+                              ],
+                            );
+                          case WakatimeStatus.failure:
+                            return Center(
+                                child: Text("Une erreur s'est produite"));
+                          default:
+                            return Center(child: CircularProgressIndicator());
+                        }
+                      },
                     ),
                   ],
                 ),

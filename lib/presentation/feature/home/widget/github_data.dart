@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app/domain/service/wakatime/entity/language/language.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class GithubData extends StatelessWidget {
+  final List<Language> wakatimeLanguages;
   const GithubData({
     Key? key,
+    required this.wakatimeLanguages,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<ChartData> chartData = [
-      ChartData('David', 25),
-      ChartData('Steve', 38),
-      ChartData('Jack', 34),
-      ChartData('Others', 52),
-      ChartData('Others', 52),
-      ChartData('Others', 52),
-      ChartData('Others', 52)
-    ];
     return Container(
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(14)),
@@ -32,7 +26,9 @@ class GithubData extends StatelessWidget {
                 child: SfCircularChart(series: <CircularSeries>[
               // Render pie chart
               PieSeries<ChartData, String>(
-                  dataSource: chartData,
+                  dataSource: wakatimeLanguages.map((e) {
+                    return ChartData(e.name!, e.percent!);
+                  }).toList(),
                   pointColorMapper: (ChartData data, _) => data.color,
                   xValueMapper: (ChartData data, _) => data.x,
                   yValueMapper: (ChartData data, _) => data.y,
