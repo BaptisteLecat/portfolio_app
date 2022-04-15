@@ -8,6 +8,7 @@ import 'package:portfolio_app/presentation/feature/landing_screen/bloc/bloc/land
 import 'package:portfolio_app/presentation/feature/landing_screen/landing_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/view/landing_view.dart';
 import 'package:portfolio_app/presentation/feature/mission/bloc/mission_bloc.dart';
+import 'package:portfolio_app/presentation/feature/practice/bloc/course_bloc.dart';
 import 'package:portfolio_app/presentation/feature/practice/screen/practices_screen.dart';
 import 'package:portfolio_app/presentation/feature/project/bloc/project_bloc.dart';
 import 'package:portfolio_app/presentation/feature/technology/screen/technologies_screen.dart';
@@ -15,6 +16,8 @@ import 'package:portfolio_app/presentation/widget/bottom_navigation/bloc/bottom_
 import 'package:portfolio_app/presentation/widget/bottom_navigation/fab_bottom_app_bar.dart';
 import 'package:portfolio_app/presentation/widget/theme/colors.dart';
 import 'package:portfolio_app/presentation/widget/theme/theme.dart';
+
+import 'presentation/feature/practice/bloc/work_bloc.dart';
 
 void main() {
   BlocOverrides.runZoned(
@@ -56,10 +59,16 @@ class AppView extends StatelessWidget {
           create: (context) => LandingScreenBloc(),
         ),
         BlocProvider<MissionBloc>(
-          create: (context) => MissionBloc(),
+          create: (context) => MissionBloc()..add(MissionFetchAll()),
         ),
         BlocProvider<ProjectBloc>(
-          create: (context) => ProjectBloc(),
+          create: (context) => ProjectBloc()..add(ProjectFetchAll()),
+        ),
+        BlocProvider(
+          create: (context) => WorkBloc()..add(WorkFetchAll()),
+        ),
+        BlocProvider(
+          create: (context) => CourseBloc()..add(CourseFetchAll()),
         ),
       ],
       child: BlocBuilder<LandingScreenBloc, LandingScreenState>(
