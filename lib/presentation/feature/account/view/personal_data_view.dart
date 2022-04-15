@@ -30,13 +30,16 @@ class PersonalDataView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Positioned(
+                      Positioned(
                           left: 20,
                           top: 0,
-                          child: Icon(
-                            Icons.keyboard_arrow_left,
-                            color: secondaryColor,
-                            size: 28,
+                          child: GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: const Icon(
+                              Icons.keyboard_arrow_left,
+                              color: secondaryColor,
+                              size: 28,
+                            ),
                           )),
                     ],
                   ),
