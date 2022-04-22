@@ -2,6 +2,7 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:new_version/new_version.dart';
 import 'package:portfolio_app/data/model/mission/mission.dart';
 import 'package:portfolio_app/presentation/feature/home/screen/home_screen.dart';
 import 'package:portfolio_app/presentation/feature/landing_screen/bloc/bloc/landing_screen_bloc.dart';
@@ -21,7 +22,8 @@ import 'presentation/feature/practice/bloc/work_bloc.dart';
 
 void main() {
   BlocOverrides.runZoned(
-    () => runApp(const App()),
+    () => runApp(
+        MaterialApp(debugShowCheckedModeBanner: false, home: const App())),
     blocObserver: CounterObserver(),
   );
 }
@@ -44,9 +46,49 @@ class App extends StatelessWidget {
   }
 }
 
-class AppView extends StatelessWidget {
+class AppView extends StatefulWidget {
+  const AppView({Key? key}) : super(key: key);
+
+  @override
+  State<AppView> createState() => _AppViewState();
+}
+
+class _AppViewState extends State<AppView> {
   final _navigatorKey = GlobalKey<NavigatorState>();
   NavigatorState get _navigator => _navigatorKey.currentState!;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Instantiate NewVersion manager object (Using GCP Console app as example)
+    final newVersion = NewVersion();
+    advancedStatusCheck(newVersion);
+  }
+
+  basicStatusCheck(NewVersion newVersion) {
+    newVersion.showAlertIfNecessary(context: context);
+    setState(() {});
+  }
+
+  advancedStatusCheck(NewVersion newVersion) async {
+    final status = await newVersion.getVersionStatus();
+    if (status != null) {
+      debugPrint(status.releaseNotes);
+      debugPrint(status.appStoreLink);
+      debugPrint(status.localVersion);
+      debugPrint(status.storeVersion);
+      debugPrint(status.canUpdate.toString());
+      newVersion.showUpdateDialog(
+          context: context,
+          versionStatus: status,
+          dialogTitle: 'Nouvelle version 🚀',
+          dialogText:
+              'Téléchargez la dernières mise à jour, pour bénéficier des nouveautés.',
+          dismissButtonText: "Plus tard",
+          updateButtonText: "C'est parti!");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
