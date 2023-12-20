@@ -72,12 +72,10 @@ ThemeData basicTheme() {
       //primaryColor: Color(0xff4829b2),
       indicatorColor: Color(0xFF807A6B),
       scaffoldBackgroundColor: backgroundColor,
-      accentColor: Color(0xFFFFF8E1),
       iconTheme: IconThemeData(
         color: Colors.white,
         size: 20.0,
       ),
-      buttonColor: Colors.white,
       backgroundColor: secondaryColor,
       tabBarTheme: base.tabBarTheme.copyWith(
         labelColor: Color(0xffce107c),
