@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(portfolio_app LANGUAGES CXX)
+project(portfolioapp LANGUAGES CXX)
 
-set(BINARY_NAME "portfolio_app")
+set(BINARY_NAME "portfolioapp")
 
 cmake_policy(SET CMP0063 NEW)
 

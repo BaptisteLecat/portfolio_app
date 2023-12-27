@@ -68,7 +68,7 @@ class CodeTimeChart extends StatelessWidget {
                           .bodyText2!
                           .copyWith(color: secondaryColor),
                       alignment: ChartAlignment.near),*/
-                  series: <ChartSeries<WakatimeData, String>>[
+                  series: <CartesianSeries<WakatimeData, String>>[
                     ColumnSeries<WakatimeData, String>(
                         name: "Temps en heures",
                         color: Theme.of(context).primaryColor.withOpacity(0.5),

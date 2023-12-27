@@ -121,7 +121,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: weather_assistant.aab
+          name: portfolio_app.aab
           path: build/app/outputs/bundle/release/app-release.aab
 
   build-and-deploy-ios:
@@ -222,5 +222,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: weather_assistant.ipa
-          path: build/ios/ipa/weather_assistant.ipa
+          name: portfolio_app.ipa
+          path: build/ios/ipa/portfolio_app.ipa

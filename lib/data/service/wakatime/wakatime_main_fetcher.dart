@@ -3,7 +3,7 @@ import 'package:portfolio_app/common/api/success/api/ApiSuccess.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
-class WakatimeMainFetcher {
+mixin WakatimeMainFetcher {
   final String apiUrl = "https://wakatime.com";
   String _urlBuilder(String subUrl) {
     return "${this.apiUrl}/$subUrl";

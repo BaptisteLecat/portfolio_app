@@ -6,7 +6,7 @@ import 'package:portfolio_app/common/api/error/api/ApiException.dart';
 import 'package:portfolio_app/common/api/success/api/ApiSuccess.dart';
 import 'package:portfolio_app/services/secure_storage.dart';
 
-class MainFetcher {
+mixin MainFetcher {
   static String? _token = null;
   String apiUrl = "https://portfolio-api.baptistelecat-dev.fr/api";
   SecureStorageHandler _storage = SecureStorageHandler();
