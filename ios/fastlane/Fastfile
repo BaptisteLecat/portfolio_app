@@ -18,7 +18,7 @@ platform :ios do
     semver = git_branch.match(/release\/(\d+\.\d+\.\d+)/)[1]
 
     sh("sh ../../deploy/deploy_ios.sh #{version_code.to_s} #{semver}")
-    upload_to_testflight(ipa: "../../portfolio_app/build/ios/ipa/portfolio_app.ipa")
+    upload_to_testflight(ipa: "../../portfolio_app/build/ios/ipa/portfolioapp.ipa")
   end
 
   lane :promote_to_app_store do
