@@ -1,6 +1,11 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:portfolio_app/src/features/experiences/widget/experience_card.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 class ExperiencesScreen extends StatefulWidget {
   const ExperiencesScreen({super.key});
@@ -13,6 +18,11 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
   final scrollController = ScrollController();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   void dispose() {
     scrollController.dispose();
     super.dispose();
@@ -21,70 +31,127 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 22),
-              child: _Background(scrollController: scrollController),
+      body: Stack(
+        children: [
+          Positioned(
+            right: MediaQuery.of(context).size.width * 0.05,
+            top: MediaQuery.of(context).size.height * 0.05,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).dividerColor.withOpacity(1),
+                shape: BoxShape.circle,
+              ),
+              height: MediaQuery.of(context).size.width * 0.5,
+              width: MediaQuery.of(context).size.width * 0.5,
             ),
-            CustomScrollView(
-              controller: scrollController,
-              slivers: [
-                SliverAppBar(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                  surfaceTintColor: Colors.transparent,
-                  elevation: 0,
-                  primary: true,
-                  toolbarHeight: 40,
-                  floating: true,
-                  snap: true,
-                ),
-                const SliverSpace(300),
-                SliverList(
-                  delegate: SliverChildListDelegate([
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: StaggeredGrid.count(
-                        crossAxisCount: 4,
-                        mainAxisSpacing: 20,
-                        crossAxisSpacing: 20,
-                        children: [
-                          StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 2.5,
-                            child: ExperienceCard(),
-                          ),
-                          const StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 1,
-                            child: SizedBox(),
-                          ),
-                          StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 2.5,
-                            child: ExperienceCard(),
-                          ),
-                          StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 2.5,
-                            child: ExperienceCard(),
-                          ),
-                          StaggeredGridTile.count(
-                            crossAxisCellCount: 2,
-                            mainAxisCellCount: 2.5,
-                            child: ExperienceCard(),
-                          ),
-                        ],
-                      ),
-                    )
-                  ]),
-                ),
-              ],
+          ),
+          Positioned(
+            right: MediaQuery.of(context).size.width * 0.5,
+            top: MediaQuery.of(context).size.height * 0.4,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).dividerColor.withOpacity(1),
+                shape: BoxShape.circle,
+              ),
+              height: MediaQuery.of(context).size.width * 0.4,
+              width: MediaQuery.of(context).size.width * 0.4,
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            right: MediaQuery.of(context).size.width * 0.7,
+            top: MediaQuery.of(context).size.height * 0.8,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).dividerColor.withOpacity(1),
+                shape: BoxShape.circle,
+              ),
+              height: MediaQuery.of(context).size.width * 0.5,
+              width: MediaQuery.of(context).size.width * 0.5,
+            ),
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 615, sigmaY: 615),
+            child: Container(),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 52,
+              left: 15,
+              right: 15,
+            ),
+            child: _Background(
+              scrollController: scrollController,
+            ),
+          ),
+          Column(
+            children: [
+              Spacer(
+                flex: 3,
+              ),
+              Flexible(flex: 7, child: ClipRRect(child: BlurShadow())),
+            ],
+          ),
+          CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              SliverAppBar(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+                elevation: 0,
+                primary: true,
+                toolbarHeight: 40,
+                floating: true,
+                snap: true,
+              ),
+              const SliverSpace(300),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: StaggeredGrid.count(
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
+                      children: [
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 2.5,
+                          child: ExperienceCard(),
+                        ),
+                        const StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 1,
+                          child: SizedBox(),
+                        ),
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 2.5,
+                          child: ExperienceCard(),
+                        ),
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 2.5,
+                          child: ExperienceCard(),
+                        ),
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 2.5,
+                          child: ExperienceCard(),
+                        ),
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 2.5,
+                          child: ExperienceCard(),
+                        ),
+                      ],
+                    ),
+                  )
+                ]),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -130,6 +197,33 @@ class _Background extends StatelessWidget {
 
         return Stack(
           children: [
+            Positioned(
+              top: 20,
+              left: 0,
+              child: Opacity(
+                opacity: 1,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      TextScrolled(
+                        "   BAPTISTE    LECAT",
+                        textDirection: TextDirection.ltr,
+                      ),
+                      TextScrolled(
+                        "   DEVELOPPEUR    ARCHITECTE",
+                        textDirection: TextDirection.rtl,
+                      ),
+                      TextScrolled(
+                        "   FLUTTER    GOOGLE CLOUD",
+                        textDirection: TextDirection.ltr,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             Align(
                 alignment: Alignment.topRight,
                 child: Container(
@@ -143,86 +237,49 @@ class _Background extends StatelessWidget {
                     child: Stack(
                       alignment: Alignment.topRight,
                       children: [
-                        Image.asset(
-                          "assets/images/baptiste_debout.png",
-                          fit: BoxFit.fitHeight,
-                          width: width > minWidth
-                              ? width
-                              : minWidth, // Ne pas descendre en dessous de la taille minimale
-                        ),
-                        Container(
-                          // Ajout d'un filtre pour assombrir l'image
-                          // Qui fait la width de l'image
-
-                          //gradient color
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                              colors: [
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(1),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(1),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(0.7),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(0.4),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(0.2),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(0.1),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(0.05),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(0.02),
-                                Theme.of(context)
-                                    .scaffoldBackgroundColor
-                                    .withOpacity(0),
-                                Colors.transparent,
-                              ],
-                            ),
-                          ),
-                        ),
+                        SizedBox(
+                            width: width > minWidth
+                                ? width
+                                : minWidth, // Ne pas descendre en dessous de la taille minimale
+                            child: Image.asset(
+                              "assets/images/baptiste_debout.png",
+                              fit: BoxFit.fitHeight,
+                            )),
                       ],
                     ),
                   ),
                 )),
-            Positioned(
-              top: 20,
-              left: 20,
-              child: Opacity(
-                opacity: opacity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Bonjour,",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    Text(
-                      "Je suis Baptiste",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
           ],
         );
       },
+    );
+  }
+}
+
+class TextScrolled extends StatelessWidget {
+  final String text;
+  final TextScrollMode mode;
+  final TextDirection textDirection;
+  const TextScrolled(
+    this.text, {
+    super.key,
+    this.mode = TextScrollMode.endless,
+    this.textDirection = TextDirection.ltr,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextScroll(
+      text.toUpperCase(),
+      mode: mode,
+      fadedBorder: true,
+      textDirection: textDirection,
+      velocity: Velocity(pixelsPerSecond: Offset(120, 0)),
+      style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+          fontWeight: FontWeight.w900,
+          fontSize: 68,
+          letterSpacing: 6,
+          height: 1.4),
     );
   }
 }
@@ -243,6 +300,32 @@ class SliverSpace extends StatelessWidget {
       child: SizedBox(
         height: direction == Axis.vertical ? size : null,
         width: direction == Axis.horizontal ? size : null,
+      ),
+    );
+  }
+}
+
+class BlurShadow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      shaderCallback: (Rect bounds) {
+        return RadialGradient(
+          center: Alignment.topCenter,
+          radius: 1,
+          colors: <Color>[
+            Theme.of(context).scaffoldBackgroundColor,
+            Colors.transparent
+          ],
+          stops: [0.4, 0.8],
+        ).createShader(bounds);
+      },
+      blendMode: BlendMode.dstOut,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 170, sigmaY: 170),
+        child: Container(
+            alignment: Alignment.center,
+            color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8)),
       ),
     );
   }

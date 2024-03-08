@@ -69,6 +69,7 @@ dependencies:
   firebase_analytics: ^10.7.4
   flutter_staggered_grid_view: ^0.7.0
   sliver_tools: ^0.2.12
+  text_scroll: ^0.2.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -106,6 +107,9 @@ flutter:
     - assets/movies/profile.mp4
     - assets/map_style.json
     - assets/icons/menu/
+    - assets/icons/tech/
+    - assets/icons/png/
+    - assets/icons/profile/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -120,45 +124,38 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Lato
+    - family: MonaSans
       fonts:
-        - asset: assets/fonts/Lato-Thin.ttf
+        - asset: assets/fonts/mona_sans/MonaSans-ExtraLight.ttf
           weight: 100
-        - asset: assets/fonts/Lato-ThinItalic.ttf
+        - asset: assets/fonts/mona_sans/MonaSans-ExtraLightItalic.ttf
           style: italic
           weight: 100
-        - asset: assets/fonts/Lato-Light.ttf
+        - asset: assets/fonts/mona_sans/MonaSans-Light.ttf
           weight: 300
-        - asset: assets/fonts/Lato-LightItalic.ttf
+        - asset: assets/fonts/mona_sans/MonaSans-LightItalic.ttf
           style: italic
           weight: 300
-        - asset: assets/fonts/Lato-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Lato-Italic.ttf
-          style: italic
-          weight: 400
-        - asset: assets/fonts/Lato-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Lato-BoldItalic.ttf
-          style: italic
-          weight: 700
-        - asset: assets/fonts/Lato-Black.ttf
-          weight: 900
-        - asset: assets/fonts/Lato-BlackItalic.ttf
-          style: italic
-          weight: 900
-    - family: Fredoka
-      fonts:
-        - asset: assets/fonts/fredoka/Fredoka-Light.ttf
-          weight: 300
-        - asset: assets/fonts/fredoka/Fredoka-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/fredoka/Fredoka-Medium.ttf
+        - asset: assets/fonts/mona_sans/MonaSans-Regular.ttf
           weight: 500
-        - asset: assets/fonts/fredoka/Fredoka-SemiBold.ttf
+        - asset: assets/fonts/mona_sans/MonaSans-Italic.ttf
+          style: italic
+          weight: 500
+        - asset: assets/fonts/mona_sans/MonaSans-Medium.ttf
           weight: 600
-        - asset: assets/fonts/fredoka/Fredoka-Bold.ttf
-          weight: 700
+        - asset: assets/fonts/mona_sans/MonaSans-MediumItalic.ttf
+          style: italic
+          weight: 600
+        - asset: assets/fonts/mona_sans/MonaSans-SemiBold.ttf
+          weight: 800
+        - asset: assets/fonts/mona_sans/MonaSans-SemiBoldItalic.ttf
+          style: italic
+          weight: 800
+        - asset: assets/fonts/mona_sans/MonaSans-Bold.ttf
+          weight: 900
+        - asset: assets/fonts/mona_sans/MonaSans-BoldItalic.ttf
+          style: italic
+          weight: 900
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

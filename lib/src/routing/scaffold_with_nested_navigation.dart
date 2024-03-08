@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:portfolio_app/src/localization/string_hardcoded.dart';
 import 'package:portfolio_app/src/routing/app_router.dart';
 
 // Stateful navigation based on:
@@ -55,109 +54,129 @@ class ScaffoldWithBottomNavBar extends ConsumerWidget {
     //current route in gorouter
     final goRouter = ref.watch(goRouterProvider);
     return Scaffold(
-      body: body,
-      // floatingActionButton: (goRouter.location == AppRoute.locations.route)
-      //     ? FloatingActionButton(
-      //         onPressed: () {
-      //           context.pushNamed(AppRoute.locationCreate.name);
-      //         },
-      //         child: const Icon(Icons.add),
-      //       )
-      //     : null,
-      bottomNavigationBar: Container(
-        height: 80,
-        child: CustomNavigationBar(
-          backgroundColor: Color(0xFF1C1C1C),
-          onTap: onDestinationSelected,
-          currentIndex: currentIndex,
-          isFloating: false,
-          borderRadius: Radius.elliptical(26, 40),
-          iconSize: 32.0,
-          selectedColor: Color(0xff040267),
-          strokeColor: Color(0x26040267),
-          unSelectedColor: Color(0xffacacac),
-          items: [
-            CustomNavigationBarItem(
-              title: Text(
-                "Home",
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Colors.white,
+      extendBody: true,
+      body: Stack(
+        children: [
+          body,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 102,
+              color: Colors.transparent,
+              child: CustomNavigationBar(
+                backgroundColor: Theme.of(context).dividerColor,
+                onTap: onDestinationSelected,
+                currentIndex: currentIndex,
+                isFloating: true,
+                borderRadius: Radius.circular(26),
+                iconSize: 52.0,
+                // selectedColor: Color(0xff040267),
+                selectedColor: Theme.of(context).primaryColor,
+                strokeColor: Theme.of(context).scaffoldBackgroundColor,
+
+                unSelectedColor: Theme.of(context).dividerColor,
+                elevation: 10,
+                scaleFactor: 0.22,
+
+                scaleCurve: Curves.easeInOutCubicEmphasized,
+                items: [
+                  CustomNavigationBarItem(
+                    icon: Center(
+                      child: SvgPicture.asset(
+                        "assets/icons/menu/career-choice.svg",
+                        height: 26,
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                      ),
                     ),
-              ),
-              selectedTitle: Text(
-                "Home",
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                    selectedIcon: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        borderRadius: BorderRadius.circular(26),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/menu/career-choice-filled.svg",
+                          height: 26,
+                          color: Theme.of(context).dividerColor,
+                        ),
+                      ),
                     ),
-              ),
-              icon: Center(
-                child: SvgPicture.asset(
-                  "assets/icons/menu/home.svg",
-                  height: 26,
-                  color: Colors.white,
-                ),
-              ),
-              selectedIcon: Center(
-                child: SvgPicture.asset("assets/icons/menu/home-filled.svg",
-                    height: 26, color: Colors.white),
+                  ),
+                  CustomNavigationBarItem(
+                    icon: Center(
+                      child: SvgPicture.asset(
+                        "assets/icons/menu/coding.svg",
+                        height: 26,
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                      ),
+                    ),
+                    selectedIcon: Container(
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        borderRadius: BorderRadius.circular(26),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/menu/coding-filled.svg",
+                          height: 26,
+                          color: Theme.of(context).dividerColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  CustomNavigationBarItem(
+                    icon: Center(
+                      child: SvgPicture.asset(
+                        "assets/icons/menu/start-up.svg",
+                        height: 24,
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                      ),
+                    ),
+                    selectedIcon: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        borderRadius: BorderRadius.circular(26),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/menu/start-up-filled.svg",
+                          height: 24,
+                          color: Theme.of(context).dividerColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  CustomNavigationBarItem(
+                    icon: Center(
+                      child: SvgPicture.asset(
+                        "assets/icons/menu/settings.svg",
+                        height: 24,
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                      ),
+                    ),
+                    selectedIcon: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        borderRadius: BorderRadius.circular(26),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/menu/settings-filled.svg",
+                          height: 24,
+                          color: Theme.of(context).dividerColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            CustomNavigationBarItem(
-              title: Text(
-                "Career",
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Colors.white,
-                    ),
-              ),
-              selectedTitle: Text(
-                "Career",
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              badgeCount: 3,
-              showBadge: true,
-              icon: Center(
-                child: SvgPicture.asset(
-                  "assets/icons/menu/career-choice.svg",
-                  height: 26,
-                  color: Colors.white,
-                ),
-              ),
-              selectedIcon: Center(
-                child: SvgPicture.asset(
-                    "assets/icons/menu/career-choice-filled.svg",
-                    height: 26,
-                    color: Colors.white),
-              ),
-            ),
-            CustomNavigationBarItem(
-              title: Text(
-                "Profile",
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Colors.white,
-                    ),
-              ),
-              selectedTitle: Text(
-                "Profile",
-                style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              icon: Center(
-                child: SvgPicture.asset("assets/icons/menu/user.svg",
-                    height: 26, color: Colors.white),
-              ),
-              selectedIcon: Center(
-                child: SvgPicture.asset("assets/icons/menu/user-filled.svg",
-                    height: 26, color: Colors.white),
-              ),
-            ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
