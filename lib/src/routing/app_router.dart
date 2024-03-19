@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_app/src/features/experiences/experience_screen.dart';
 import 'package:portfolio_app/src/features/experiences/experiences_screen.dart';
+import 'package:portfolio_app/src/features/projects/presentation/project_screen.dart';
+import 'package:portfolio_app/src/features/projects/presentation/projects_screen.dart';
 import 'package:portfolio_app/src/features/settings/settings_screen.dart';
-import 'package:portfolio_app/src/features/project/profile_screen.dart';
 import 'package:portfolio_app/src/features/tech/techs_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:portfolio_app/src/routing/not_found_screen.dart';
@@ -27,7 +28,8 @@ enum AppRoute {
   experienceId(route: "experiences:experienceId"),
   techs(route: "/techs"),
   tech(route: "techs:techId"),
-  skills(route: "/skills"),
+  projects(route: "/projects"),
+  project(route: ":projectId"),
   settings(route: "/settings"),
   ;
 
@@ -83,10 +85,25 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
             routes: [
               // Shopping Cart
               GoRoute(
-                path: AppRoute.skills.route,
-                name: AppRoute.skills.name,
+                path: AppRoute.projects.route,
+                name: AppRoute.projects.name,
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: ProjectsScreen()),
+                routes: [
+                  GoRoute(
+                      path: AppRoute.project.route,
+                      name: AppRoute.project.name,
+                      builder: (context, state) {
+                        final projectId = state.pathParameters['projectId'];
+                        if (projectId == null ||
+                            int.tryParse(projectId) == null) {
+                          return const NotFoundScreen();
+                        }
+                        return ProjectScreen(
+                          projectId: int.parse(projectId),
+                        );
+                      }),
+                ],
               ),
             ],
           ),

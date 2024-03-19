@@ -62,19 +62,25 @@ class ExperienceScreen extends StatelessWidget {
                     Expanded(
                       child: CustomScrollView(
                         slivers: [
-                          SliverList(
-                            delegate: SliverChildListDelegate(
-                              [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Windle - Nantes, France",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                              color: (Theme.of(context)
-                                                          .brightness ==
+                          SliverAppBar(
+                            expandedHeight: 30,
+                            collapsedHeight: 30,
+                            toolbarHeight: 30,
+                            pinned: true,
+                            floating: true,
+                            surfaceTintColor: const Color(0xFF232323),
+                            backgroundColor: const Color(0xFF232323),
+                            automaticallyImplyLeading: false,
+                            flexibleSpace: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Windle - Nantes, France",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color:
+                                              (Theme.of(context).brightness ==
                                                       Brightness.light)
                                                   ? Theme.of(context)
                                                       .scaffoldBackgroundColor
@@ -82,25 +88,28 @@ class ExperienceScreen extends StatelessWidget {
                                                   : Theme.of(context)
                                                       .dividerColor
                                                       .withOpacity(0.7),
-                                              fontWeight: FontWeight.bold,
-                                            )),
-                                    Text(
-                                        "Internship Junior Cloud Architect Flutter Developer",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleLarge!
-                                            .copyWith(
-                                              color: (Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.light)
-                                                  ? Theme.of(context)
-                                                      .scaffoldBackgroundColor
-                                                  : Theme.of(context)
-                                                      .dividerColor,
-                                              fontWeight: FontWeight.bold,
-                                            )),
-                                  ],
-                                ),
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                Text(
+                                    "Internship Junior Cloud Architect Flutter Developer",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(
+                                          color: (Theme.of(context)
+                                                      .brightness ==
+                                                  Brightness.light)
+                                              ? Theme.of(context)
+                                                  .scaffoldBackgroundColor
+                                              : Theme.of(context).dividerColor,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                              ],
+                            ),
+                          ),
+                          SliverList(
+                            delegate: SliverChildListDelegate(
+                              [
                                 const SizedBox(height: 20),
                                 Row(
                                   mainAxisAlignment:
@@ -317,7 +326,8 @@ class ExperienceScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
+                                const SizedBox(height: 110),
                               ],
                             ),
                           ),

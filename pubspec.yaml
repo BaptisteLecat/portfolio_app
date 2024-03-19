@@ -70,6 +70,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   sliver_tools: ^0.2.12
   text_scroll: ^0.2.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -110,6 +111,7 @@ flutter:
     - assets/icons/tech/
     - assets/icons/png/
     - assets/icons/profile/
+    - assets/images/projects/constellation/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

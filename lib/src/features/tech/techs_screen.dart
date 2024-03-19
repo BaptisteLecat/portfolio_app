@@ -136,15 +136,40 @@ class TechsScreen extends StatelessWidget {
         scale: 0.8,
       ),
     ];
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                child: list[index],
-              );
-            }));
+    return SafeArea(
+      child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: CustomScrollView(slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Skill Spectrum',
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                      'A snapshot of my technical prowess in coding, frameworks, and deployment, highlighting tools that empower continuous integration and delivery',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.w400,
+                          )),
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ),
+            SliverList.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                    child: list[index],
+                  );
+                })
+          ])),
+    );
   }
 }
