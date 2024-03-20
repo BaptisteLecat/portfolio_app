@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:portfolio_app/src/features/experiences/widget/experience_card.dart';
+import 'package:portfolio_app/src/features/experiences/presentation/widget/experience_card.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 class ExperiencesScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:portfolio_app/src/features/tech/widgets/tech_widget.dart';
+import 'package:portfolio_app/src/features/tech/presentation/widgets/tech_widget.dart';
 
 class TechsScreen extends StatelessWidget {
   const TechsScreen({super.key});
