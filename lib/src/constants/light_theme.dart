@@ -27,23 +27,26 @@ ThemeData lightTheme(context) {
         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
       ),
     ),
-    inputDecorationTheme: const InputDecorationTheme(
-      fillColor: Color.fromARGB(255, 244, 243, 243),
-      filled: true,
-      hintStyle: TextStyle(color: Color(0xFFB8B5C3)),
+    inputDecorationTheme: InputDecorationTheme(
+      hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: Theme.of(context).dividerColor.withOpacity(0.7),
+          ),
+      floatingLabelBehavior: FloatingLabelBehavior.never,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.transparent),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderSide: BorderSide(color: Theme.of(context).dividerColor),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.transparent),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderSide:
+            BorderSide(width: 1.2, color: Theme.of(context).dividerColor),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Color(0xFF3F51B5), width: 2.0),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderSide:
+            BorderSide(color: Theme.of(context).dividerColor, width: 2.0),
       ),
-      errorBorder: OutlineInputBorder(
+      errorBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
         borderSide: BorderSide(
           color: Color(0xFFEA5B5B),

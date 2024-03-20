@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_app/src/routing/app_router.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -22,15 +23,20 @@ class SettingsScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
+                      height: 120,
+                      width: 120,
+                      padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Theme.of(context).dividerColor,
                       ),
-                      padding: const EdgeInsets.all(2),
                       child: Center(
-                        child: Image.asset(
-                          "assets/icons/profile/profile_2.png",
-                          height: 120,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(80),
+                          child: Image.asset(
+                            "assets/icons/profile/profile_3.png",
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -55,162 +61,164 @@ class SettingsScreen extends StatelessWidget {
               flex: 4,
               child: Stack(
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 55),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 80),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).dividerColor,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 55),
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 80),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).dividerColor,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 5,
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              blurRadius: 10,
-                              spreadRadius: 5,
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            leading: Container(
+                                width: 46,
+                                height: 46,
+                                decoration: BoxDecoration(
+                                  color:
+                                      Theme.of(context).scaffoldBackgroundColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                    child: Icon(
+                                  Icons.person,
+                                  color: Theme.of(context).dividerColor,
+                                  size: 28,
+                                ))),
+                            title: Text("Personnal Informations",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor)),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 22,
+                              color: Theme.of(context).scaffoldBackgroundColor,
                             ),
-                          ],
-                        ),
-                        child: Column(
-                          children: [
-                            ListTile(
-                              leading: Container(
-                                  width: 46,
-                                  height: 46,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                      child: Icon(
-                                    Icons.person,
-                                    color: Theme.of(context).dividerColor,
-                                    size: 28,
-                                  ))),
-                              title: Text("Personnal Informations",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor)),
-                              trailing: Icon(
-                                Icons.arrow_forward_ios,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                              ),
-                              onTap: () {
-                                GoRouter.of(context).go("/settings/logout");
-                              },
+                            onTap: () {
+                              GoRouter.of(context)
+                                  .push("${AppRoute.settings.route}/personnal");
+                            },
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          ListTile(
+                            leading: Container(
+                                width: 46,
+                                height: 46,
+                                decoration: BoxDecoration(
+                                  color:
+                                      Theme.of(context).scaffoldBackgroundColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                    child: Icon(
+                                  Icons.language,
+                                  color: Theme.of(context).dividerColor,
+                                  size: 28,
+                                ))),
+                            title: Text("Language",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor)),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 22,
+                              color: Theme.of(context).scaffoldBackgroundColor,
                             ),
-                            const SizedBox(
-                              height: 15,
+                            onTap: () {
+                              GoRouter.of(context)
+                                  .push("${AppRoute.settings.route}/language");
+                            },
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          ListTile(
+                            leading: Container(
+                                width: 46,
+                                height: 46,
+                                decoration: BoxDecoration(
+                                  color:
+                                      Theme.of(context).scaffoldBackgroundColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                    child: Icon(
+                                  Icons.settings,
+                                  color: Theme.of(context).dividerColor,
+                                  size: 28,
+                                ))),
+                            title: Text("Settings",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor)),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 22,
+                              color: Theme.of(context).scaffoldBackgroundColor,
                             ),
-                            ListTile(
-                              leading: Container(
-                                  width: 46,
-                                  height: 46,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                      child: Icon(
-                                    Icons.language,
-                                    color: Theme.of(context).dividerColor,
-                                    size: 28,
-                                  ))),
-                              title: Text("Language",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor)),
-                              trailing: Icon(
-                                Icons.arrow_forward_ios,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                              ),
-                              onTap: () {
-                                GoRouter.of(context).go("/settings/logout");
-                              },
+                            onTap: () {
+                              GoRouter.of(context)
+                                  .push("${AppRoute.settings.route}/setting");
+                            },
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          ListTile(
+                            leading: Container(
+                                width: 46,
+                                height: 46,
+                                decoration: BoxDecoration(
+                                  color:
+                                      Theme.of(context).scaffoldBackgroundColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                    child: Icon(
+                                  Icons.question_answer,
+                                  color: Theme.of(context).dividerColor,
+                                  size: 28,
+                                ))),
+                            title: Text("FAQ",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor)),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 22,
+                              color: Theme.of(context).scaffoldBackgroundColor,
                             ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            ListTile(
-                              leading: Container(
-                                  width: 46,
-                                  height: 46,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                      child: Icon(
-                                    Icons.settings,
-                                    color: Theme.of(context).dividerColor,
-                                    size: 28,
-                                  ))),
-                              title: Text("Settings",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor)),
-                              trailing: Icon(
-                                Icons.arrow_forward_ios,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                              ),
-                              onTap: () {
-                                GoRouter.of(context).go("/settings/logout");
-                              },
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            ListTile(
-                              leading: Container(
-                                  width: 46,
-                                  height: 46,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                      child: Icon(
-                                    Icons.question_answer,
-                                    color: Theme.of(context).dividerColor,
-                                    size: 28,
-                                  ))),
-                              title: Text("FAQ",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor)),
-                              trailing: Icon(
-                                Icons.arrow_forward_ios,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                              ),
-                              onTap: () {
-                                GoRouter.of(context).go("/settings/logout");
-                              },
-                            ),
-                          ],
-                        ),
+                            onTap: () {
+                              GoRouter.of(context)
+                                  .push("${AppRoute.settings.route}/faq");
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   ),

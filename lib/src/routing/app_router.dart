@@ -4,6 +4,11 @@ import 'package:portfolio_app/src/features/experiences/experience_screen.dart';
 import 'package:portfolio_app/src/features/experiences/experiences_screen.dart';
 import 'package:portfolio_app/src/features/projects/presentation/project_screen.dart';
 import 'package:portfolio_app/src/features/projects/presentation/projects_screen.dart';
+import 'package:portfolio_app/src/features/settings/faq_screen.dart';
+import 'package:portfolio_app/src/features/settings/language_screen.dart';
+import 'package:portfolio_app/src/features/settings/personnal_edit_screen.dart';
+import 'package:portfolio_app/src/features/settings/personnal_screen.dart';
+import 'package:portfolio_app/src/features/settings/setting_screen.dart';
 import 'package:portfolio_app/src/features/settings/settings_screen.dart';
 import 'package:portfolio_app/src/features/tech/techs_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -31,7 +36,11 @@ enum AppRoute {
   projects(route: "/projects"),
   project(route: ":projectId"),
   settings(route: "/settings"),
-  ;
+  settingsPersonnal(route: "personnal"),
+  settingsPersonnalEdit(route: "edit"),
+  settingsLanguage(route: "language"),
+  settingsSetting(route: "setting"),
+  settingsFaq(route: "faq");
 
   const AppRoute({required this.route});
   final String route;
@@ -115,6 +124,40 @@ GoRouter goRouter(ProviderRef<GoRouter> ref) {
                 name: AppRoute.settings.name,
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: SettingsScreen()),
+                routes: [
+                  GoRoute(
+                    path: AppRoute.settingsPersonnal.route,
+                    name: AppRoute.settingsPersonnal.name,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: PersonnalScreen()),
+                    routes: [
+                      GoRoute(
+                        path: AppRoute.settingsPersonnalEdit.route,
+                        name: AppRoute.settingsPersonnalEdit.name,
+                        pageBuilder: (context, state) => const NoTransitionPage(
+                            child: PersonnalEditScreen()),
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: AppRoute.settingsLanguage.route,
+                    name: AppRoute.settingsLanguage.name,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: LanguageScreen()),
+                  ),
+                  GoRoute(
+                    path: AppRoute.settingsSetting.route,
+                    name: AppRoute.settingsSetting.name,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: SettingScreen()),
+                  ),
+                  GoRoute(
+                    path: AppRoute.settingsFaq.route,
+                    name: AppRoute.settingsFaq.name,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: FaqScreen()),
+                  ),
+                ],
               ),
             ],
           ),

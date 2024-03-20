@@ -24,13 +24,14 @@ class _ProjectScreenState extends State<ProjectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
           child: Stack(
         children: [
           Column(
             children: [
               Expanded(
-                  flex: 3,
+                  flex: 2,
                   child: Container(
                       color: Theme.of(context).primaryColor,
                       width: double.infinity,
