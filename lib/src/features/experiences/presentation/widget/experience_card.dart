@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_app/src/features/experiences/domain/entities/experience.dart';
 import 'package:portfolio_app/src/routing/app_router.dart';
 
 class ExperienceCard extends StatelessWidget {
-  const ExperienceCard({super.key});
+  final Experience experience;
+  const ExperienceCard({
+    super.key,
+    required this.experience,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         context.pushNamed(AppRoute.experienceId.name, pathParameters: {
-          "experienceId": "1",
+          "experienceId": "${experience.id}",
         });
       },
       child: Container(
           decoration: BoxDecoration(
-            // gradient: LinearGradient(
-            //   begin: Alignment.topLeft,
-            //   end: Alignment.bottomRight,
-            //   colors: [
-            //     Theme.of(context).secondaryHeaderColor,
-            //     Theme.of(context).primaryColor,
-            //   ],
-            // ),
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(28),
             boxShadow: [
@@ -45,18 +42,18 @@ class ExperienceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Développeur Flutter",
+                Text(experience.title,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).scaffoldBackgroundColor,
                         )),
                 Spacer(),
-                Text("2020 / 2021",
+                Text("${experience.startYear} / ${experience.endYear}",
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).scaffoldBackgroundColor,
                         )),
                 Text(
-                  "Nantes - France",
+                  "${experience.city} - ${experience.country}",
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: Theme.of(context).scaffoldBackgroundColor,
                       ),

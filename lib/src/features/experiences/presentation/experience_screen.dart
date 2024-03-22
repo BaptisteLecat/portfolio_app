@@ -1,12 +1,21 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:portfolio_app/src/features/experiences/domain/entities/experience.dart';
+import 'package:portfolio_app/src/mock/experience_mock.dart';
 
 class ExperienceScreen extends StatelessWidget {
-  const ExperienceScreen({super.key});
+  final int experienceId;
+  const ExperienceScreen({
+    super.key,
+    required this.experienceId,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final Experience experience = mockedExperiences.firstWhere(
+      (element) => element.id == experienceId,
+    );
     return Scaffold(
       body: CustomScrollView(
         physics: const ClampingScrollPhysics(),
@@ -74,7 +83,8 @@ class ExperienceScreen extends StatelessWidget {
                             flexibleSpace: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Windle - Nantes, France",
+                                Text(
+                                    "Windle - ${experience.city}, ${experience.country}",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyMedium!
@@ -90,8 +100,7 @@ class ExperienceScreen extends StatelessWidget {
                                                       .withOpacity(0.7),
                                           fontWeight: FontWeight.bold,
                                         )),
-                                Text(
-                                    "Internship Junior Cloud Architect Flutter Developer",
+                                Text(experience.title,
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleLarge!
@@ -124,7 +133,7 @@ class ExperienceScreen extends StatelessWidget {
                                           height: 32,
                                         ),
                                         const SizedBox(width: 10),
-                                        Text("33 200€",
+                                        Text("${experience.salary}",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .titleSmall!
@@ -148,7 +157,7 @@ class ExperienceScreen extends StatelessWidget {
                                           height: 32,
                                         ),
                                         const SizedBox(width: 10),
-                                        Text("3 years",
+                                        Text(experience.time,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .titleSmall!
@@ -172,7 +181,7 @@ class ExperienceScreen extends StatelessWidget {
                                           height: 32,
                                         ),
                                         const SizedBox(width: 10),
-                                        Text("Hybrid",
+                                        Text(experience.workType,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .titleSmall!
@@ -209,7 +218,7 @@ class ExperienceScreen extends StatelessWidget {
                                             )),
                                     const SizedBox(height: 4),
                                     Text(
-                                      """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nunc. Nulla nec purus feugiat, molestie ipsum et, consequat nunc. Nulla nec purus feugiat, molestie ipsum et, consequat nunc.""",
+                                      experience.description,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodySmall!

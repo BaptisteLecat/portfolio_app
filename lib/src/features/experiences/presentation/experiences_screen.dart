@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:portfolio_app/src/features/experiences/presentation/widget/experience_card.dart';
+import 'package:portfolio_app/src/mock/experience_mock.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 class ExperiencesScreen extends StatefulWidget {
@@ -116,35 +117,33 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
                       children: [
                         StaggeredGridTile.count(
                           crossAxisCellCount: 2,
-                          mainAxisCellCount: 2.5,
-                          child: ExperienceCard(),
-                        ),
-                        const StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
                           mainAxisCellCount: 1,
                           child: SizedBox(),
                         ),
-                        StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
-                          mainAxisCellCount: 2.5,
-                          child: ExperienceCard(),
-                        ),
-                        StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
-                          mainAxisCellCount: 2.5,
-                          child: ExperienceCard(),
-                        ),
-                        StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
-                          mainAxisCellCount: 2.5,
-                          child: ExperienceCard(),
-                        ),
-                        StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
-                          mainAxisCellCount: 2.5,
-                          child: ExperienceCard(),
-                        ),
-                      ],
+                      ].expand((element) {
+                        List<StaggeredGridTile> list = [];
+                        mockedExperiences.asMap().forEach((index, experience) {
+                          if (index == 0) {
+                            list.add(StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 2.5,
+                              child: ExperienceCard(
+                                experience: experience,
+                              ),
+                            ));
+                            list.add(element);
+                          } else {
+                            list.add(StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 2.5,
+                              child: ExperienceCard(
+                                experience: experience,
+                              ),
+                            ));
+                          }
+                        });
+                        return list;
+                      }).toList(),
                     ),
                   )
                 ]),
