@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_app/src/mock/project_mock.dart';
 import 'package:portfolio_app/src/routing/app_router.dart';
 
 class ProjectsScreen extends StatelessWidget {
@@ -61,6 +62,7 @@ class ProjectsScreen extends StatelessWidget {
                     SizedBox(
                       height: 40,
                       child: ListView.builder(
+                          itemCount: mockedProjectCategories.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return Container(
@@ -80,7 +82,7 @@ class ProjectsScreen extends StatelessWidget {
                                     horizontal: 16, vertical: 4),
                                 child: Center(
                                   child: Text(
-                                    "Course 1",
+                                    mockedProjectCategories[index].name,
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall!
@@ -104,11 +106,12 @@ class ProjectsScreen extends StatelessWidget {
               ),
             ),
             SliverList.builder(
-                itemCount: items.length,
+                itemCount: mockedProjects.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      context.push("${AppRoute.projects.route}/$index");
+                      context.push(
+                          "${AppRoute.projects.route}/${mockedProjects[index].id}");
                     },
                     child: Container(
                       margin: (index == items.length - 1)
@@ -118,13 +121,21 @@ class ProjectsScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              height: 220,
-                              decoration: BoxDecoration(
-                                color: index % 2 == 0
-                                    ? Theme.of(context).dividerColor
-                                    : Theme.of(context).primaryColor,
-                                borderRadius: BorderRadius.circular(16),
-                              )),
+                            height: 220,
+                            decoration: BoxDecoration(
+                              color: index % 2 == 0
+                                  ? Theme.of(context).dividerColor
+                                  : Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: Image.asset(
+                                mockedProjects[index].assetImages.first,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           const SizedBox(height: 10),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -132,7 +143,7 @@ class ProjectsScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Weather App boosted with AI",
+                                  mockedProjects[index].name,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
@@ -142,7 +153,7 @@ class ProjectsScreen extends StatelessWidget {
                                       ),
                                 ),
                                 Text(
-                                  "Learn how to build a weather app with AI. This course will teach you how to build a weather app with AI and Flutter.",
+                                  mockedProjects[index].description,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context)

@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:portfolio_app/src/features/projects/domain/entities/project.dart';
+import 'package:portfolio_app/src/mock/project_mock.dart';
 
 class ProjectScreen extends StatefulWidget {
   final int projectId;
@@ -15,16 +17,32 @@ class ProjectScreen extends StatefulWidget {
 
 class _ProjectScreenState extends State<ProjectScreen> {
   final CarouselController _carouselController = CarouselController();
-  final List<Widget> _ = [
-    Image.asset("assets/images/projects/constellation/image1.png"),
-    Image.asset("assets/images/projects/constellation/image1.png"),
-    Image.asset("assets/images/projects/constellation/image1.png"),
-  ];
+  late Project project;
+
+  @override
+  void initState() {
+    project =
+        mockedProjects.firstWhere((element) => element.id == widget.projectId);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: Theme.of(context).brightness == Brightness.dark
+            ? IconButton(
+                icon: Icon(
+                  Icons.chevron_left,
+                  size: 36,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            : null,
+      ),
       body: SafeArea(
           child: Stack(
         children: [
@@ -33,14 +51,20 @@ class _ProjectScreenState extends State<ProjectScreen> {
               Expanded(
                   flex: 2,
                   child: Container(
-                      color: Theme.of(context).primaryColor,
+                      color: project.color,
                       width: double.infinity,
                       child: CarouselSlider(
                         carouselController: _carouselController,
-                        options:
-                            CarouselOptions(autoPlay: true, aspectRatio: 1),
-                        items: _.map((i) {
-                          return i;
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          viewportFraction: 1,
+                          aspectRatio: 1,
+                        ),
+                        items: project.assetImages.map((i) {
+                          return Image.asset(
+                            i,
+                            fit: BoxFit.cover,
+                          );
                         }).toList(),
                       ))),
               Expanded(
@@ -56,18 +80,20 @@ class _ProjectScreenState extends State<ProjectScreen> {
                     child: CustomScrollView(
                       slivers: [
                         SliverAppBar(
-                          expandedHeight: 160,
-                          collapsedHeight: 160,
+                          expandedHeight: 120,
+                          collapsedHeight: 120,
                           pinned: true,
                           floating: true,
                           surfaceTintColor:
+                              Theme.of(context).scaffoldBackgroundColor,
+                          backgroundColor:
                               Theme.of(context).scaffoldBackgroundColor,
                           automaticallyImplyLeading: false,
                           flexibleSpace: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Mobile app for the Constellation association",
+                                project.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall!
@@ -75,7 +101,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                'Volunteer',
+                                project.workType,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall!
@@ -149,11 +175,11 @@ class _ProjectScreenState extends State<ProjectScreen> {
                             height: 94,
                             child: ListView.builder(
                               shrinkWrap: true,
-                              itemCount: 10,
+                              itemCount: project.features.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return Container(
-                                  width: 94,
+                                  width: 174,
                                   margin: const EdgeInsets.only(right: 8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
@@ -173,7 +199,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Icon(Icons.child_care),
-                                        Text("Feature 1qsdfqsdqsd",
+                                        Text(project.features[index].name,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyMedium)
@@ -192,7 +218,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                                   .copyWith(fontWeight: FontWeight.bold)),
                           const SizedBox(height: 8),
                           Text(
-                            "This is a mobile app for the Constellation association. It is a non-profit organization that aims to help people with disabilities. The app is used to help the association's members to communicate with each other and to organize events.",
+                            project.description,
                             style: Theme.of(context).textTheme.bodyMedium,
                             textAlign: TextAlign.justify,
                           ),

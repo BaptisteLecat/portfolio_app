@@ -111,7 +111,7 @@ flutter:
     - assets/icons/tech/
     - assets/icons/png/
     - assets/icons/profile/
-    - assets/images/projects/constellation/
+    - assets/projects/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
