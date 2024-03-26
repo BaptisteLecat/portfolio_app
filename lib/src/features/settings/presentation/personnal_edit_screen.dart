@@ -9,8 +9,24 @@ class PersonnalEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Change Avatar',
-              style: Theme.of(context).textTheme.titleMedium),
+          leading: Theme.of(context).brightness == Brightness.dark
+              ? IconButton(
+                  icon: Icon(
+                    Icons.chevron_left,
+                    size: 36,
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              : null,
+          title: Text(
+            'Change Avatar',
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
+          ),
         ),
         body: Column(
           children: [
@@ -70,7 +86,9 @@ class PersonnalEditScreen extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
-                                      .copyWith(color: Colors.white)),
+                                      .copyWith(
+                                          color: Theme.of(context)
+                                              .scaffoldBackgroundColor)),
                             ),
                           ),
                         ),

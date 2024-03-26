@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart';
+import 'package:portfolio_app/src/mock/profile_mock.dart';
 import 'package:portfolio_app/src/routing/app_router.dart';
 
 class PersonnalScreen extends StatelessWidget {
@@ -12,8 +13,24 @@ class PersonnalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Edit Profile',
-              style: Theme.of(context).textTheme.titleMedium),
+          leading: Theme.of(context).brightness == Brightness.dark
+              ? IconButton(
+                  icon: Icon(
+                    Icons.chevron_left,
+                    size: 36,
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              : null,
+          title: Text(
+            'Edit Profile',
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -21,6 +38,7 @@ class PersonnalScreen extends StatelessWidget {
             slivers: [
               SliverAppBar(
                   automaticallyImplyLeading: false,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   expandedHeight: 160,
                   collapsedHeight: 160,
                   flexibleSpace: Row(
@@ -95,6 +113,7 @@ class PersonnalScreen extends StatelessWidget {
                       child: TextFormField(
                         cursorColor: Theme.of(context).dividerColor,
                         decoration: InputDecoration(hintText: 'Full Name'),
+                        initialValue: profileMocked.fullName,
                       ),
                     ),
                     Text("Email Address",
@@ -108,6 +127,7 @@ class PersonnalScreen extends StatelessWidget {
                       child: TextFormField(
                         cursorColor: Theme.of(context).dividerColor,
                         decoration: InputDecoration(hintText: 'Email'),
+                        initialValue: profileMocked.email,
                       ),
                     ),
                     Text("Phone Number",
@@ -121,6 +141,7 @@ class PersonnalScreen extends StatelessWidget {
                       child: TextFormField(
                         cursorColor: Theme.of(context).dividerColor,
                         decoration: InputDecoration(hintText: 'Phone'),
+                        initialValue: profileMocked.phoneNumber,
                       ),
                     ),
                     Text("City and Country",
@@ -135,6 +156,8 @@ class PersonnalScreen extends StatelessWidget {
                         cursorColor: Theme.of(context).dividerColor,
                         decoration:
                             InputDecoration(hintText: 'City and Country'),
+                        initialValue:
+                            "${profileMocked.city}, ${profileMocked.country}",
                       ),
                     ),
                     const SizedBox(height: 26),
@@ -154,7 +177,9 @@ class PersonnalScreen extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleMedium!
-                                    .copyWith(color: Colors.white)),
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor)),
                           ),
                         ),
                       ),
