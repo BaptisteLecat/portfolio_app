@@ -61,7 +61,10 @@ class ScaffoldWithBottomNavBar extends ConsumerWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 102,
+              //if is android 80 else 100
+              height: (Theme.of(context).platform == TargetPlatform.android)
+                  ? 80
+                  : 100,
               color: Colors.transparent,
               child: CustomNavigationBar(
                 backgroundColor: Theme.of(context).dividerColor,

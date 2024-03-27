@@ -171,6 +171,11 @@ class ProjectsScreen extends StatelessWidget {
                     ),
                   );
                 }),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 120,
+              ),
+            ),
           ],
         ),
       )),

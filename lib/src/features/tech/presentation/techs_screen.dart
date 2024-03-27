@@ -168,7 +168,12 @@ class TechsScreen extends StatelessWidget {
                         const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                     child: list[index],
                   );
-                })
+                }),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 120,
+              ),
+            ),
           ])),
     );
   }

@@ -109,7 +109,8 @@ class _ExperiencesScreenState extends State<ExperiencesScreen> {
               SliverList(
                 delegate: SliverChildListDelegate([
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding:
+                        const EdgeInsets.only(left: 20, right: 20, bottom: 120),
                     child: StaggeredGrid.count(
                       crossAxisCount: 4,
                       mainAxisSpacing: 20,
