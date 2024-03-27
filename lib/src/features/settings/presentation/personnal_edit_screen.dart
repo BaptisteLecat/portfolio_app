@@ -24,7 +24,9 @@ class PersonnalEditScreen extends StatelessWidget {
           title: Text(
             'Change Avatar',
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Theme.of(context).scaffoldBackgroundColor
+                      : Theme.of(context).dividerColor,
                 ),
           ),
         ),

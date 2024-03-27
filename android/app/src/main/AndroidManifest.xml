@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.portfolioapp">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.baptistelecat.portfolioapp">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application android:label="portfolioapp" android:name="${applicationName}" android:icon="@mipmap/launcher_icon">

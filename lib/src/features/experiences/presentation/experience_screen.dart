@@ -72,8 +72,8 @@ class ExperienceScreen extends StatelessWidget {
                       child: CustomScrollView(
                         slivers: [
                           SliverAppBar(
-                            expandedHeight: 30,
-                            collapsedHeight: 30,
+                            expandedHeight: 60,
+                            collapsedHeight: 54,
                             toolbarHeight: 30,
                             pinned: true,
                             floating: true,
@@ -84,7 +84,7 @@ class ExperienceScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                    "Windle - ${experience.city}, ${experience.country}",
+                                    "${experience.company} - ${experience.city}, ${experience.country}",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyMedium!
