@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "340847943631",
+    "project_id": "baptiste-lecat-portfolio",
+    "storage_bucket": "baptiste-lecat-portfolio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340847943631:android:ee68d4c26c57ed3748fcba",
+        "android_client_info": {
+          "package_name": "com.baptistelecat.portfolio_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgGFQVqRIatw2YEQXTpLmxoNJPB6s7Tlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340847943631:android:31bee2a3b3b17aea48fcba",
+        "android_client_info": {
+          "package_name": "com.baptistelecat.portfolioapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgGFQVqRIatw2YEQXTpLmxoNJPB6s7Tlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

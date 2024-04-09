@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "baptiste-lecat-portfolio",
+    "private_key_id": "7c173d980d48c75b5e4aae6fa18c4f2fe9e52cfd",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDdOrW7vHpJQF5M\nh3wMIiBvjkDi05NL7RqpZCbp4FjI8XqfjJLR3Hy9VoDkZ5IVKbgf2qOtyZtjGKAr\nprWYHWir9gNJaXm8JoA4JgJ3Bxxmv5l1sJnc+qKGx88/0d9utaZhIvnusMOW6TID\njnW83NDLMknSomHHsHUvch79ZMZvSazhWhSv52gwZ4pw54+WwQ61rf7BFy/fWGR7\nCMNFXQ2my2gJjd895HoI9SpkBPuLJW4lpJSRVnDrU1clcYFQ5XbpvfFVOra+9/DK\na2HLgM27cVXZzPEYjiicsLFWxEHUp+qhlRRMbtfUGvr7Y7R3N1MaApNE6gY7mVNb\nn4y1xk5JAgMBAAECggEABg9IQFHRsy00UAoTgaUTKJ8Xw6bKNXWTigGEZ9pVcD6e\nDl38PQuaLpj+m5MDLzl28cdsPZPEwfaAF6X/uiCPGAu7bBC7rQXMdA1FesNq+Z0E\nq/K4CjOizUiOkpfR9A89dRJvUGSO3PS7AhouOyu8u94fI8n/HehFU3T/qI7wuQZZ\nbeziQRS33FXWcy4Li0OroIhbwRg4uezkABw3GxdCDsKLHQ5qdd28bIihf7NZJgt5\n75NotJ3rtYcXRijw7fdeZYrxmwFGFvWxee86aHRciyAxrrQA8TABrFjzDol9dKTg\nxPcNfv0hotRjzr0tZrIcoYm0heLypWK0LkAhlaGhYQKBgQD3iNyXFsbda1V6tqTN\nnWrrOBhz4hQ2xf73GNeaacH45crfgQiV9OA4Ci0yzhMrgWWlkIR/+2xyxmXuBhjd\ndFj3S/mM++vGrr3Zf/nPMVvz6SzgGBpdiBWX5NkkM4wl5r5gf9RsBHo+rDvWHtPq\nRROnLk8A53g74qkw9Rs9SY1l4QKBgQDky4xiqwK1ptO8jHdiSwVCbOs6IDR3RMrm\nlTKAW6JVOms0ZdzT4NS6UXx4GZgP6AEi+JTIe4NySdH4DTjcfYLfyFvJDjlxoCHJ\nDUVngiEksU8O5altw38Xd+HnckDTu4YeQMuXG9FbLhtpglids8lRcy9dcbeFdKSv\nYBvEIM4laQKBgFKuyZhCSGz/hE74ITZ5RZSKaUiUFNJy8oaRKrtuZheAknJzxG1q\nnVa6t3xH74lRsKVMD6Y8Um5ILRYDvVyDl5ALNbFNGOWFyu6S29vEjgV8Nrwn8O6b\nHTNegtWfzkl+uMq9CDSIjljO6THNnFWde0IVqtgPeU7vmDo9NTsUjYGhAoGAAizJ\nLdrwUKfAVYeETwPljecZKVlLBmM6Bo0eiMfWODcw87OQMNdvTkIeC8o6ftQ2xo1U\nZL9/1WNMQq5lfvsWdmgiLzwaYbEjARVGNqCvDfk9hie6v5dfKurx09BrO1gKA1mc\nVdhm2hYLHqqliwI9hK+yoJHHK9abBivEt82UCBkCgYEA1WTWdl67hO/kbtBsyoLf\nkDXt3ID0zql3b68QWbgiCxGuyIB22e2x83DYaOZYFF1Z5JtgRLotGnmfRQfXH7l3\nv/FVmvudBnsAxLb1RoTj75PANIXN68R/7NrArZLBuMfwfdNCfrEwgfIZjoONVI0q\n6IaHI56smPvvTVLp+JCgje8=\n-----END PRIVATE KEY-----\n",
+    "client_email": "fastlane-ios-match@baptiste-lecat-portfolio.iam.gserviceaccount.com",
+    "client_id": "106477699511591194325",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fastlane-ios-match%40baptiste-lecat-portfolio.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+}
