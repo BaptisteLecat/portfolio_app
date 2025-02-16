@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:portfolio_app/src/features/projects/domain/entities/project.dart';
@@ -16,7 +16,6 @@ class ProjectScreen extends StatefulWidget {
 }
 
 class _ProjectScreenState extends State<ProjectScreen> {
-  final CarouselController _carouselController = CarouselController();
   late Project project;
 
   @override
@@ -53,9 +52,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   child: Container(
                       color: project.color,
                       width: double.infinity,
-                      child: CarouselSlider(
-                        carouselController: _carouselController,
-                        options: CarouselOptions(
+                      child: carousel.CarouselSlider(
+                        options: carousel.CarouselOptions(
                           autoPlay: true,
                           viewportFraction: 1,
                           aspectRatio: 1,
