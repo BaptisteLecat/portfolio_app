@@ -4,6 +4,11 @@ This project is my personal app to introduce myself. You'll find all you need to
 
 ![App Onboarding](/.github/assets/app_onboard.png?raw=true "App Onboarding")
 
+
+## Available on the Play Store
+
+<a href="https://play.google.com/store/apps/details?id=com.baptistelecat.portfolioapp&pcampaignid=web_share"><img src="https://github.com/BaptisteLecat/baptistelecat/assets/60200125/596d6840-5979-4a4b-a598-f975b3ff5922" alt="Play Store" width="40"/></a>
+
 ## What's inside?
 
 Welcome to my portfolio application, a platform where I share with you my journey and skills in the world of computer development. As a junior architect passionate about Flutter technologies and Google Cloud Platform, I invite you to discover the projects that have marked my career.
