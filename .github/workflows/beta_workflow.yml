@@ -85,20 +85,6 @@ jobs:
           ruby-version: 3.0
           rubygems: latest
 
-      - name: Install Firebase CLI
-        uses: pocket-apps/action-setup-firebase@v2
-        with:
-          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
-
-      - name: Generate Firebase options
-        run: |
-          flutter pub global activate flutterfire_cli
-          flutterfire configure --project=$FIREBASE_PROJECT_ID --android-package-name=$ANDROID_PACKAGE_NAME --platforms=android --yes
-        shell: bash
-        env:
-          FIREBASE_PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
-          ANDROID_PACKAGE_NAME: ${{ secrets.DEVELOPER_APP_IDENTIFIER }}
-
       - name: Setup Android release key
         run: |
           echo ${{ secrets.KEY_BASE_64 }} | base64 --decode > android/app/key.jks
@@ -185,20 +171,6 @@ jobs:
           bundle install
           bundle exec pod install
         shell: bash
-
-      - name: Install Firebase CLI
-        uses: pocket-apps/action-setup-firebase@v2
-        with:
-          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
-
-      - name: Generate Firebase options
-        run: |
-          flutter pub global activate flutterfire_cli
-          flutterfire configure --project=$FIREBASE_PROJECT_ID --ios-bundle-id=$IOS_BUNDLE_ID --platforms=ios --yes
-        shell: bash
-        env:
-          FIREBASE_PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
-          IOS_BUNDLE_ID: ${{ secrets.DEVELOPER_APP_IDENTIFIER }}
 
       - name: Deploy iOS Beta to TestFlight via Fastlane
         uses: maierj/fastlane-action@v1.4.0
