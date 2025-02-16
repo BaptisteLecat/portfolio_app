@@ -3,7 +3,7 @@ description: My awesome flutter portfolio.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.1+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,28 +30,25 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.6
-  flutter_svg: ^2.0.9
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.0.17
   custom_navigation_bar: ^0.8.2
-  json_annotation: ^4.8.1
-  url_launcher: ^6.2.2
-  flutter_launcher_icons: ^0.13.1
-  firebase_core: ^2.24.2
+  json_annotation: ^4.9.0
+  url_launcher: ^6.3.1
+  flutter_launcher_icons: ^0.14.3
+  firebase_core: ^3.11.0
   flutter_riverpod: ^2.3.6
   go_router: ^8.0.5
   riverpod_annotation: ^2.1.1
-  google_fonts: ^4.0.4
-  firebase_auth: ^4.2.4
-  firebase_crashlytics: ^3.3.0
-  firebase_performance: ^0.9.3+8
-  firebase_analytics: ^10.7.4
+  google_fonts: ^6.2.1
+  firebase_crashlytics: ^4.3.2
+  firebase_analytics: ^11.4.2
   flutter_staggered_grid_view: ^0.7.0
   sliver_tools: ^0.2.12
   text_scroll: ^0.2.0
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -59,6 +56,9 @@ dev_dependencies:
   test: ^1.24.9
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  win32: ^5.5.4
 
 flutter_icons:
   android: "launcher_icon"
@@ -71,7 +71,6 @@ flutter_icons:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
